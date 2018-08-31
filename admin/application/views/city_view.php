@@ -27,13 +27,23 @@
                 <div class="col-md-12">
                     <div class="tile">
                         <div class="col-lg-12">
-                            <?= form_open('location/country') ?>
+                            <?= form_open('location/city') ?>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Country Name</label>
-                                    <input class="form-control" id="new_country" name="new_country" type="text" placeholder="Enter New category" autofocus>
-                                    <span class="text-danger"><?= form_error('new_country') ? form_error('new_country') : "" ?></span>                                    
+                                    <label for="exampleSelect1">Select Country</label>
+                                    <select class="form-control" name="country">
+                                        <option value="">---Select City---</option>
+                                        <?php foreach ($all_country_key as $key => $all_country_data) : ?>
+                                            <option <?php if (set_value('country') == $all_country_data->id): echo "selected " ; endif ; ?> value="<?= $all_country_data->id ?>"><?= $all_country_data->country_name ?></option>
+                                        <?php endforeach ; ?>
+                                    </select>
+                                    <span class="text-danger"><?= form_error('country') ? form_error('country') : "" ?></span>
                                 </div>
-                                <input type="hidden" value="0" id="country_id" name="country_id">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">City Name</label>
+                                    <input class="form-control" id="new_city" name="new_city" type="text" placeholder="Enter New category" autofocus>
+                                    <span class="text-danger"><?= form_error('new_city') ? form_error('new_city') : "" ?></span>                                    
+                                </div>
+                                <input type="hidden" value="0" id="city_id" name="city_id">
                                 <button class="btn btn-primary" type="submit">Submit</button>
                             <?= form_close() ?> 
                         </div>
@@ -48,18 +58,20 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>City Name</th>
                                         <th>Country Name</th>
-                                        <th>Edit</th>
+                                        <th>Created Date</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($all_country_key as $key => $all_country_data) : ?>
+                                    <?php foreach ($all_city_key as $key => $all_city_data) : ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
-                                            <td><?= $all_country_data->country_name ?></td>
-                                            <td><button onclick="pass_value('<?= $all_country_data->country_name ?>','<?= $all_country_data->id ?>')" value="<?= $all_country_data->id ?>" class="btn btn-primary">Edit</button></td>
-                                            <td><a href=""><button class="btn btn-danger">Delete</button></a></td>
+                                            <td><?= $all_city_data->city_name ?></td>
+                                            <td><?= $all_city_data->country_name ?></td>
+                                            <td><?= $all_city_data->created_date ?></td>
+                                            <td><a href="<?= base_url('location/delete_city') ?>/<?= $this->friend->base64url_encode($all_city_data->id) ?>"><button class="btn btn-danger">Delete</button></a></td>
                                         </tr>    
                                     <?php endforeach ; ?>
                                 </tbody>
@@ -76,17 +88,13 @@
         <script type="text/javascript" src="<?= base_url('assets') ?>/js/plugins/dataTables.bootstrap.min.js"></script>
         <script type="text/javascript">$('#sampleTable').DataTable();</script>
         <script type="text/javascript">
-
-            function pass_value(country_name , country_id) {
-                $("#new_country").val(country_name);
-                $("#country_id").val(country_id);
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
+            var success_city = '<?= $this->session->flashdata('success_city') ? $this->session->flashdata('success_city') : "" ?>';
+            var error_city = '<?= $this->session->flashdata('error_city') ? $this->session->flashdata('error_city') : "" ?>';
+            if (success_city) {
+                swal("Success", success_city, "success");
             }
-            
-
-            var success_country = '<?= $this->session->flashdata('success_country') ? $this->session->flashdata('success_country') : "" ?>';
-            if (success_country) {
-                swal("Success", success_country, "success");
+            if (error_city) {
+                swal("Opssss..!!", error_city, "error");
             }
         </script>
     </body>

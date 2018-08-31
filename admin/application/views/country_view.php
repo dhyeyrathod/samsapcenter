@@ -49,6 +49,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Country Name</th>
+                                        <th>Created Date</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
@@ -58,6 +59,7 @@
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $all_country_data->country_name ?></td>
+                                            <td><?= $all_country_data->created_date ?></td>
                                             <td><button onclick="pass_value('<?= $all_country_data->country_name ?>','<?= $all_country_data->id ?>')" value="<?= $all_country_data->id ?>" class="btn btn-primary">Edit</button></td>
                                             <td><a href="<?= base_url('location/delete_country') ?>/<?= $this->friend->base64url_encode($all_country_data->id) ?>"><button class="btn btn-danger">Delete</button></a></td>
                                         </tr>    
@@ -82,11 +84,14 @@
                 $("#country_id").val(country_id);
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
             }
-            
-
+            var error_country = '<?= $this->session->flashdata('error_country') ? $this->session->flashdata('error_country') : "" ?>';
             var success_country = '<?= $this->session->flashdata('success_country') ? $this->session->flashdata('success_country') : "" ?>';
+
             if (success_country) {
                 swal("Success", success_country, "success");
+            }
+            if (error_country) {
+                swal("Opss..!!", error_country, "error");
             }
         </script>
     </body>
