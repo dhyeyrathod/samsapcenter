@@ -12,7 +12,7 @@ class Friend
 	} 
 	public function profileImageUploadConfig()
 	{
-		$config['upload_path'] = './post_image/';
+		$config['upload_path'] = './spa_image/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['encrypt_name'] = TRUE ;
 		return $config ;

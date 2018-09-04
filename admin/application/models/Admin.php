@@ -139,4 +139,60 @@ class Admin extends CI_Model
 		$sql_str = "INSERT INTO services SET services_name = ".$this->db->escape($data['services_name']).",description = ".$this->db->escape($data['description']).",status = ".$this->db->escape($data['status']).",created_date = NOW()";
 		return $this->db->query($sql_str);
 	}
+	public function checkAreaPresent($city_id)
+	{
+		$sql_str = "SELECT * FROM area WHERE fk_city_id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function getAllAreasByCityId($city_id)
+	{
+		$sql_str = "SELECT * FROM area WHERE fk_city_id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->result();
+	}
+	public function setSpaProfileDetails($data)
+	{
+		if ($data['spa_id'] == 0) {
+			$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id'])." ,fk_user_id = 0 , created_date = NOW() , created_by = 0 , status = true";
+			return $this->db->query($sql_str) ? $this->db->insert_id() : false ;
+		} else {
+			
+			
+		}
+	}
+	public function checkSpaIdIsPresent($spa_id)
+	{
+		$sql_str = "SELECT * FROM spa_profile WHERE id = ".$this->db->escape($spa_id);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function setSpaProfileLocationDetails($data,$last_spa_inserted_id)
+	{
+		$this->db->trans_start();
+		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($last_spa_inserted_id).",fk_counry_id = ".$this->db->escape($data['fk_counry_id']).",fk_city_id = ".$this->db->escape($data['fk_city_id']).",fk_area_id = ".$this->db->escape($data['fk_area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['map_url']).",created_by = 0 , created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['fk_counry_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['fk_city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['fk_area_id'])).",pincode = ".$this->db->escape($data['pincode']);
+		return $this->db->query($sql_str);
+	}
+	private function getCountryNameById($country_id)
+	{
+		$sql_str = "SELECT country_name FROM country WHERE id = ".$this->db->escape($country_id);
+		return $this->db->query($sql_str)->row()->country_name;
+	}
+	private function getCityNameById($city_id)
+	{
+		$sql_str = "SELECT city_name FROM city WHERE id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->row()->city_name;
+	}
+	private function getAreaNameById($area_id)
+	{
+		$sql_str = "SELECT area_name FROM area WHERE id = ".$this->db->escape($area_id);
+		return $this->db->query($sql_str)->row()->area_name;
+	}
+	public function setSpaProfileServicesCategoryDetails($data,$last_spa_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_services_category SET fk_category_id = ".$this->db->escape($data['fk_category_id']).",fk_services_id = ".$this->db->escape($data['fk_services_id']).",fk_services_names = ".$this->db->escape($this->getservicesById($data['fk_services_id'])->services_name).",fk_category_name = ".$this->db->escape($this->getCategoryById($data['fk_category_id'])->category_name).",created_by = 0,created_date = NOW() , fk_profile_id = ".$this->db->escape($last_spa_inserted_id);$this->db->query($sql_str);$this->db->trans_complete(); 
+		return $this->db->trans_status();
+	}
+	public function setSpaProfileImages($file_name , $last_spa_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_images SET fk_profile_id = ".$this->db->escape($last_spa_inserted_id).",image_name = ".$this->db->escape($file_name).", created_date = NOW() , created_by = 0";
+		return $this->db->query($sql_str);
+	}
 }

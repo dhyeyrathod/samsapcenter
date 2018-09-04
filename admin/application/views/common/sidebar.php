@@ -18,7 +18,11 @@
         </li>
         <li><a class="app-menu__item <?php if ($this->uri->segment(1) == "category") { echo "active" ; } ?>" href="<?= base_url('category') ?>"><i class="app-menu__icon fa fa-list-alt"></i><span class="app-menu__label">Category</span></a>
         </li>
-        <li><a class="app-menu__item <?php if ($this->uri->segment(1) == "services") { echo "active" ; } ?>" href="<?= base_url('services') ?>"><i class="app-menu__icon fa fa-cutlery"></i><span class="app-menu__label">Services</span></a>
+        <li class="treeview">
+            <a class="app-menu__item <?php if ($this->uri->segment(1) == "location") { echo "active" ; } ?>" href="<?= base_url() ?>" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-map-marker"></i><span class="app-menu__label">Spa Profile</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+            <ul class="treeview-menu">
+                <li><a class="treeview-item" href="<?= base_url('spa_profile/add_new') ?>"><i class="icon fa fa-circle-o"></i>Add New Profile</a></li>
+            </ul>
         </li>
     </ul>
     
