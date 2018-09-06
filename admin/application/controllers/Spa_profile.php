@@ -28,7 +28,7 @@ class Spa_profile extends MY_Controller
 		                	$this->admin->setSpaProfileImages($this->upload->data('file_name'),$last_inserted_id);	
 		                } 
 					}
-					$this->session->set_flashdata('success_profile','profile create successfully');
+					$this->session->set_flashdata('success_profile','profile create successfully...!');
 		            redirect('spa_profile/add_new');
 				} else {
 					$this->session->set_flashdata('error_profile','Profile Is not created plese fill propar informaton');

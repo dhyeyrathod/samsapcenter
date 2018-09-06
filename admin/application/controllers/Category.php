@@ -7,6 +7,7 @@ class Category extends MY_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		if (!$this->session->userdata('admin_id')) : redirect('account/login') ; endif ;
 		$this->load->model('admin');
 	}
 	public function index()

@@ -195,4 +195,22 @@ class Admin extends CI_Model
 		$sql_str = "INSERT INTO spa_profile_images SET fk_profile_id = ".$this->db->escape($last_spa_inserted_id).",image_name = ".$this->db->escape($file_name).", created_date = NOW() , created_by = 0";
 		return $this->db->query($sql_str);
 	}
+	public function getCountryTableField()
+	{
+		$sql_str = "DESCRIBE country";
+		$country_fields = array();
+		foreach ($this->db->query($sql_str)->result_array() as $row) {
+			$country_fields[] = $row['Field'];
+		}
+		return $country_fields ;
+	}
+	public function checkCountryPrsentByName($country_name)
+	{
+		$sql_str = "SELECT * FROM country WHERE country_name = ".$this->db->escape($country_name);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function FunctionName($value='')
+	{
+		# code...
+	}
 }
