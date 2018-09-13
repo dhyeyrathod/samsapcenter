@@ -209,8 +209,43 @@ class Admin extends CI_Model
 		$sql_str = "SELECT * FROM country WHERE country_name = ".$this->db->escape($country_name);
 		return $this->db->query($sql_str)->num_rows();
 	}
-	public function FunctionName($value='')
+	public function getCityTableField($value='')
 	{
-		# code...
+		$sql_str = "DESCRIBE city";
+		$city_fields = array();
+		foreach ($this->db->query($sql_str)->result_array() as $row) {
+			$city_fields[] = $row['Field'];
+		}
+		return $city_fields ;
+	}
+	public function checkCityPresentByName($city_name)
+	{
+		$sql_str = "SELECT * FROM city WHERE city_name = ".$this->db->escape($city_name);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function setCityByExcel($city_data)
+	{
+		$sql_str = "INSERT INTO city SET city_name = ".$this->db->escape($city_data['city_name']).", country_name = ".$this->db->escape($city_data['country_name']).",fk_country_id = ".$this->db->escape($this->getCountryidByName($city_data['country_name'])->id).",created_date = NOW() , status = TRUE";
+		return $this->db->query($sql_str);
+	}
+	public function getCountryidByName($country_name)
+	{
+		$sql_str = "SELECT * FROM country WHERE country_name = ".$this->db->escape($country_name);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function checkAreaPresentByname($area_name)
+	{
+		$sql_str = "SELECT * FROM area WHERE area_name = ".$this->db->escape($area_name);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function setAreaByExcel($data)
+	{
+		$sql_str = "INSERT INTO area SET area_name = ".$this->db->escape($data['area_name']).",fk_city_id = ".$this->db->escape($this->getCityIdByCityName($data['city_name'])->id).",fk_country_id = ".$this->db->escape($this->getCountryidByName($data['country_name'])->id).",created_date = NOW() , status = ".$this->db->escape($data['status']).",city_name = ".$this->db->escape($data['city_name']).",country_name = ".$this->db->escape($data['country_name']).",excel_code = ".$this->db->escape($data['excel_code']);
+		return $this->db->query($sql_str);
+	}
+	public function getCityIdByCityName($city_name)
+	{
+		$sql_str = "SELECT * FROM city WHERE city_name = ".$this->db->escape($city_name);
+		return $this->db->query($sql_str)->row();
 	}
 }

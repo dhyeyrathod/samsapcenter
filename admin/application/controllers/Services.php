@@ -9,6 +9,10 @@ class services extends MY_Controller
 		parent::__construct();
 		$this->load->model('admin');
 	}
+	public function call()
+	{
+		echo $this->home->test();
+	}
 	public function index()
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {

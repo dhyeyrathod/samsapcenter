@@ -43,6 +43,8 @@
                                     <select class="form-control" name="option">
                                         <option value="">---Select type---</option>
                                         <option value="country">Country</option>
+                                        <option value="city">City</option>
+                                        <option value="area">Area</option>
                                     </select>
                                     <span class="text-danger"><?= form_error('option') ? form_error('option') : "" ; ?></span>
                                 </div>
