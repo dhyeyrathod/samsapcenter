@@ -45,6 +45,7 @@
                                         <option value="country">Country</option>
                                         <option value="city">City</option>
                                         <option value="area">Area</option>
+                                        <option value="profile">Profile</option>
                                     </select>
                                     <span class="text-danger"><?= form_error('option') ? form_error('option') : "" ; ?></span>
                                 </div>

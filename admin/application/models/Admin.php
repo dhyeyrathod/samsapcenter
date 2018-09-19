@@ -231,7 +231,7 @@ class Admin extends CI_Model
 	public function getCountryidByName($country_name)
 	{
 		$sql_str = "SELECT * FROM country WHERE country_name = ".$this->db->escape($country_name);
-		return $this->db->query($sql_str)->num_rows();
+		return $this->db->query($sql_str)->row();
 	}
 	public function checkAreaPresentByname($area_name)
 	{
@@ -246,6 +246,57 @@ class Admin extends CI_Model
 	public function getCityIdByCityName($city_name)
 	{
 		$sql_str = "SELECT * FROM city WHERE city_name = ".$this->db->escape($city_name);
+		return $this->db->query($sql_str)->row();
+	}
+	public function setExcelSpaProfile($data,$excel_code)
+	{
+		$this->db->trans_begin();
+		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",fk_user_id = ".$this->db->escape($data['user_id']).",created_date = NOW() , created_by = 0 , status = ".$this->db->escape($data['status']);
+		if ($this->db->query($sql_str)) {
+			$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
+		} else {
+			$respons = json_encode(array('status' => 'failure'));
+		}
+		return $respons ;
+	}
+	public function setExcelSpaProfileLocation($data , $excel_code , $last_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($last_inserted_id).",fk_counry_id = ".$this->db->escape($this->getCountryidByName($data['country_name'])->id).",fk_city_id = ".$this->db->escape($this->getCityIdByCityName($data['city_name'])->id).",fk_area_id = ".$this->db->escape($this->getAreaIdByName($data['area_name'])->id).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",created_by = 0 , created_date = NOW() ,country_name = ".$this->db->escape($data['country_name']).", city_name = ".$this->db->escape($data['city_name']).",area_name = ".$this->db->escape($data['area_name']).",pincode = ".$this->db->escape($data['pincode']).", excel_code = ".$this->db->escape($excel_code);
+		return $this->db->query($sql_str);
+	}
+	public function getAreaIdByName($area_name)
+	{
+		$sql_str = "SELECT * FROM area WHERE area_name = ".$this->db->escape($area_name);
+		return $this->db->query($sql_str)->row();
+	}
+	public function setExcelProfilePaymentInfo($data , $excel_code , $last_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_payment_info SET fk_profile_id = ".$this->db->escape($last_inserted_id).",fk_payment_type_id = ".$this->db->escape($this->getPAymentTypeIdByPaymentType($data['payment_type'])->id).",fk_payment_type_name = ".$this->db->escape($data['payment_type']).",excel_code = ".$this->db->escape($excel_code);
+		return $this->db->query($sql_str);
+	}
+	public function getPAymentTypeIdByPaymentType($payment_type)
+	{
+		$sql_str = "SELECT * FROM payment_info WHERE payment_type_name = ".$this->db->escape($payment_type);
+		return $this->db->query($sql_str)->row();
+	}
+	public function setExcelSpaservicesCategory($data , $excel_code , $last_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_services_category SET fk_category_id = ".$this->db->escape($this->getCategoryidByName($data['category_name'])->id).",fk_services_names = ".$this->db->escape($data['services_names']).",fk_services_id = ".$this->db->escape($this->getServicesIdByName($data['services_names'])->id).",fk_category_name = ".$this->db->escape($data['category_name']).",created_by = 0 , created_date = NOW() , fk_profile_id = ".$this->db->escape($last_inserted_id).",excel_code = ".$this->db->escape($excel_code);
+		$this->db->query($sql_str);
+		if ($this->db->trans_status()) {
+			$this->db->trans_commit();return true;
+		} else {
+			$this->db->trans_rollback();return fasle ;
+		}
+	}
+	public function getCategoryidByName($category_name)
+	{
+		$sql_str = "SELECT * FROM category WHERE category_name = ".$this->db->escape($category_name);
+		return $this->db->query($sql_str)->row();
+	}
+	public function getServicesIdByName($services_name)
+	{
+		$sql_str = "SELECT * FROM services WHERE services_name = ".$this->db->escape($services_name);
 		return $this->db->query($sql_str)->row();
 	}
 }
