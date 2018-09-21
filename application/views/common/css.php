@@ -13,8 +13,12 @@
 <link href="<?= base_url('assets') ?>/css/lightbox.css" rel="stylesheet">
 <link href="<?= base_url('assets') ?>/css/StyleSheet.css" rel="stylesheet" type="text/css" />
 <link href="<?= base_url('assets') ?>/css/style.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
 <style type="text/css">
-    iframe#_hjRemoteVarsFrame
+    iframe #_hjRemoteVarsFrame
     {
     display: none !important;
     width: 1px !important;

@@ -16,7 +16,7 @@
                     <div class="container">
                        <?php $this->load->view('common/header') ?>
                         <div class="flexslider flexslider-simple">
-                            <img src="images/inner-banner.jpeg" />
+                            <img src="<?= base_url('assets') ?>/images/inner-banner.jpeg" />
                         </div>
                     </div>
                 </section>
@@ -41,14 +41,16 @@
                                                         <div class="col-12">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2"><span class="fa fa-user"></span></div>
-                                                                <input class="form-control" type="text" name="email" placeholder="Email or username" />
+                                                                <input class="form-control" type="text" name="email" placeholder="Email" />
                                                             </div>
+                                                            <?= form_error('email') ?>
                                                         </div>
                                                         <div class="col-12 mt-2 mt-sm-4">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2"><span class="fa fa-lock"></span></div>
                                                                 <input  class="form-control" type="password" name="password" placeholder="Password" value="" />
                                                             </div>
+                                                            <?= form_error('password') ?>
                                                         </div>
                                                     </div>
                                                     <div class="row align-items-center mt-3">
@@ -76,5 +78,15 @@
             </div>
         </main>
         <?php $this->load->view('common/js') ?>
+        <script type="text/javascript">
+            var success = '<?= $this->session->flashdata('success') ? $this->session->flashdata('success') : "" ?>';
+            var error = '<?= $this->session->flashdata('error') ? $this->session->flashdata('error') : "" ?>';
+            if (success) {
+                swal("Success", success, "success");
+            }
+            if (error) {
+                swal("Opps..!!", error, "error");
+            }
+        </script>
     </body>
 </html>

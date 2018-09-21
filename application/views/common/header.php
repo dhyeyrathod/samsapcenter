@@ -12,15 +12,13 @@
             <ul class="navbar-nav fs-0 fw-700">
                 <li ><a href="free-listing.html">Free Listing</a></li>
                 <li><a href="advertise.html">Advertise</a></li>
-                <li class="has-dropdown">
-                    <a href="#">Language</a>
-                    <ul class="dropdown fs--1">
-                        <li><a href="#">Hindi</a></li>
-                        <li><a href="#">English</a></li>
-                    </ul>
-                </li>
-                <li><a href="login.html">Login</a> </li>
-                <li><a class="d-block" href="Signup.html">Signup</a></li>
+                <?php if ($this->session->userdata('user_id')) : ?>
+                    <li><a href="<?= base_url('account/logout') ?>">Logout</a> </li>
+                <?php else : ?>
+                    <li><a href="<?= base_url('account/login') ?>">Login</a> </li>
+                    <li><a class="d-block" href="<?= base_url('account/registration') ?>">Signup</a></li>
+                <?php endif ; ?>
+                
             </ul>
         </div>
     </nav>

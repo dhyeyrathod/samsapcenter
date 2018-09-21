@@ -2,21 +2,20 @@
 /**
 * @author Jay Rathod
 */
-class Home extends MY_Controller
+class Profile extends MY_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('website');
 	}
-	public function index()
+	public function category()
 	{
-		$this->set_current_locaation();
+		$category_id = $this->friend->base64url_decode($this->uri->segment(3));
 		$data['category_key'] = $this->website->getRandomCategoryLimitedBySix();
 		$data['area_key'] = $this->website->getRandomAreaLimitedten($this->session->userdata('current_locaation'));
 		$data['services_key'] = $this->website->getRandomServicesLimitedten();
-		$data['paid_profile_key'] = $this->website->getPaidProfile($this->session->userdata('current_locaation'));
-		$data['free_profile_key'] = $this->website->getFreeProfiles($this->session->userdata('current_locaation'));
-		$this->load->view('home_view',$data);
+		$data['get_category_profile'] = $this->website->getProfileByCategory($this->session->userdata('current_locaation'),$category_id);
+		$this->load->view('category_view',$data);
 	}
 }

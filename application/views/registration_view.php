@@ -42,30 +42,35 @@
                                                                 <div class="input-group-addon background-11 fs-2 icon-box"><span class="fa fa-user"></span></div>
                                                                 <input class="form-control" type="text" name="username" placeholder="Your Name">
                                                             </div>
+                                                            <?= form_error('username') ?> 
                                                         </div>
                                                         <div class="col-12  mb-2 mb-sm-4">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2 icon-box"><span class="fa fa-phone"></span></div>
                                                                 <input class="form-control" type="text" name="contact" placeholder="Your Contact Number">
                                                             </div>
+                                                            <?= form_error('contact') ?> 
                                                         </div>
                                                         <div class="col-12  mb-2 mb-sm-4">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2 icon-box"><span class="fa fa-envelope"></span></div>
                                                                 <input class="form-control" type="text" name="email" placeholder="Your Email">
                                                             </div>
+                                                            <?= form_error('email') ?>
                                                         </div>
                                                         <div class="col-12  mb-2 mb-sm-4">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2 icon-box"><span class="fa fa-lock"></span></div>
-                                                                <input class="form-control" type="text" name="password" placeholder="Password">
+                                                                <input class="form-control" type="password" name="password" placeholder="Password">
                                                             </div>
+                                                            <?= form_error('password') ?>
                                                         </div>
                                                         <div class="col-12 mb-2 mb-sm-4">
                                                             <div class="input-group">
                                                                 <div class="input-group-addon background-11 fs-2 icon-box"><span class="fa fa-repeat"></span></div>
-                                                                <input class="form-control" type="text" name="passconf" placeholder="Password">
+                                                                <input class="form-control" type="password" name="passconf" placeholder="Password">
                                                             </div>
+                                                            <?= form_error('passconf') ?>
                                                         </div>
                                                     </div>
                                                     <div class="row align-items-center mb-3">
@@ -84,12 +89,18 @@
                     </div>
                 </section>
                 <?php $this->load->view('common/footer') ?>
-                <div class="rightfixed">
-                    <a href="free-listing.html" class="frilst "></a>
-                    <a  href="customer-care.html" class="cscare "></a>
-                </div>
             </div>
         </main>
         <?php $this->load->view('common/js') ?>
+        <script type="text/javascript">
+            var success = '<?= $this->session->flashdata('success') ? $this->session->flashdata('success') : "" ?>';
+            var error = '<?= $this->session->flashdata('error') ? $this->session->flashdata('error') : "" ?>';
+            if (success) {
+                swal("Success", success, "success");
+            }
+            if (error) {
+                swal("Opps..!!", error, "error");
+            }
+        </script>
     </body>
 </html>

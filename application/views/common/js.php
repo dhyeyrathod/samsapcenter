@@ -13,8 +13,6 @@
 <script src="<?= base_url('assets') ?>/js/lightbox.js" type="text/javascript"></script>
 <script src="<?= base_url('assets') ?>/js/jquery.flexslider-min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets') ?>/js/core.js" type="text/javascript"></script>
+<script src="//unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?= base_url('assets') ?>/js/main.js" type="text/javascript"></script>
 <script src="<?= base_url('assets') ?>/js/js.js" type="text/javascript"></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-    crossorigin="anonymous">

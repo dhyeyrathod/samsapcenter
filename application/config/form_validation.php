@@ -15,7 +15,7 @@ $config = array(
                                     array(
                                             'field' => 'passconf',
                                             'label' => 'Password Confirmation',
-                                            'rules' => 'required'
+                                            'rules' => 'required|matches[password]'
                                          ),
                                     array(
                                             'field' => 'contact',
@@ -25,7 +25,7 @@ $config = array(
                                     array(
                                             'field' => 'email',
                                             'label' => 'Email',
-                                            'rules' => 'required|is_unique[members.email]'
+                                            'rules' => 'required|is_unique[members.email]|valid_email'
                                          )
                                     ),
                  'email' => array(

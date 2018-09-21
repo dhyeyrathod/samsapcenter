@@ -16,7 +16,16 @@ class Account extends MY_Controller
 			$this->form_validation->set_rules('email', 'Email Id', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
 			if ($this->form_validation->run()) {
-				$this->website->authentication($this->input->post());
+				if ($this->website->UserAuthentication($this->input->post()) == 1) {
+					$getUserData = $this->website->getSingleUserDataByEmail($this->input->post('email'));
+					$setSessionData['username']=$getUserData->username;$setSessionData['email']=$getUserData->email ;
+					$setSessionData['contact_number']=$getUserData->contact_number;$setSessionData['user_id']=$getUserData->id;
+					$this->session->set_userdata($setSessionData);
+					$this->session->set_flashdata('success','Login Successfully..!!');redirect('account/login');
+				} else {
+					$this->session->set_flashdata('error','Email and password is invalid');
+					redirect('account/login');
+				}
 			} 
 		}
 		$this->load->view('login_view');
@@ -26,14 +35,21 @@ class Account extends MY_Controller
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			if ($this->form_validation->run('signup')) {
 				if ($this->website->setMembers($this->input->post())) {
-					$data['success'] = "Registration Successfully";
+					$this->session->set_flashdata('success','Registration Successfully...!! Plese login.');
+					redirect('account/login');
 				} else {
-					echo "error";
+					$this->session->set_flashdata('error','Registration Successfully...!! Plese login.');
+					redirect('account/registration');
 				}
 			}
-			exit();
 		}
-		$data[''] = "";
+		$data['test'] = "";
 		$this->load->view('registration_view',$data);
+	}
+	public function logout()
+	{
+		$this->session->unset_userdata('username');$this->session->unset_userdata('email');
+		$this->session->unset_userdata('contact_number');$this->session->unset_userdata('user_id');
+		$this->session->set_flashdata('success','Thank You for visit. if you have any query plese contact us.');redirect('account/login');
 	}
 }

@@ -70,7 +70,7 @@
                                     <hr class="color-9 my-2">
                                     <ul>
                                         <?php foreach ($category_key as $key => $category_data) : ?>
-                                            <li><a href="#"><span class="fa fa-list-alt"></span> &nbsp <?= $category_data->category_name ?></a></li>
+                                            <li><a href="<?= base_url().str_replace(" ", "-",$category_data->category_name)."-in-".str_replace(" ","-",$this->session->userdata('current_locaation'))."/category/".$this->friend->base64url_encode($category_data->id) ?>"><span class="fa fa-list-alt"></span> &nbsp <?= $category_data->category_name ?></a></li>
                                         <?php endforeach ; ?>
                                     </ul>
                                 </div>
