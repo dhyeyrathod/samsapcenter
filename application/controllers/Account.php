@@ -28,7 +28,8 @@ class Account extends MY_Controller
 				}
 			} 
 		}
-		$this->load->view('login_view');
+		$data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
+		$this->load->view('login_view',$data);
 	}
 	public function registration()
 	{
@@ -44,6 +45,7 @@ class Account extends MY_Controller
 			}
 		}
 		$data['test'] = "";
+		$data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
 		$this->load->view('registration_view',$data);
 	}
 	public function logout()

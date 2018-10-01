@@ -79,7 +79,7 @@
                                     <hr class="color-9 my-2">
                                     <ul>
                                         <?php foreach ($area_key as $key => $area_data) : ?>
-                                            <li><a href="all-area.html"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
+                                            <li><a href="<?= base_url().str_replace(' ','',$area_data->country_name)."/".str_replace(' ','',$area_data->city_name)."/".str_replace(' ','-',$area_data->area_name)."/area-location/".$this->friend->base64url_encode($area_data->id) ?>"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
                                         <?php endforeach ; ?>
                                     </ul>
                                 </div>
@@ -88,7 +88,7 @@
                                     <hr class="color-9 my-2">
                                     <ul>
                                         <?php foreach ($services_key as $key => $services_data) : ?>
-                                            <li><a href="body-massage-centres.html"><span class="fa fa-hand-o-right"></span> &nbsp <?= $services_data->services_name ?></a></li>
+                                            <li><a href="<?= base_url().str_replace(' ','-',$services_data->services_name)."-services-in-".$this->session->userdata('current_locaation')."/services/".$this->friend->base64url_encode($services_data->id) ?>"><span class="fa fa-hand-o-right"></span> &nbsp <?= $services_data->services_name ?></a></li>
                                         <?php endforeach ; ?>
                                     </ul>
                                 </div>
@@ -104,17 +104,17 @@
                                     <div class="row">
                                         <?php foreach ($paid_profile_key as $key => $paid_profile_data) : ?>
                                             <div class="col-lg-4  mb-3 mt-3 imgp">
-                                                <a  class="cuadroa" href="details.html">
+                                                <a  class="cuadroa" href="<?= base_url().str_replace(' ','-',$paid_profile_data->title)."/info/".$this->friend->base64url_encode($paid_profile_data->id) ?>">
                                                     <div class="cuadro_intro_hover ">
                                                         <p style="text-align:center;">
-                                                            <img src="<?= base_url('assets') ?>/images/Premium-2.jpg" class="img-responsive" alt="">
+                                                            <img src="<?= base_url('admin/spa_image') ?>/<?= $paid_profile_data->image ?>" class="img-responsive" alt="">
                                                         </p>
                                                         <div class="caption">
                                                             <div class="blur"></div>
                                                             <div class="caption-text">
                                                                 <h3><marquee><?= $paid_profile_data->title ?></marquee></h3>
                                                                 <p><b><?= $paid_profile_data->city_name ?></b> </p>
-                                                                <p class="bgp">You will enjoy different kinds of body treatment and skin care treatments through facial and massage.</p>
+                                                                <hr/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -146,6 +146,7 @@
                                     <div class="row">
                                         <?php foreach ($free_profile_key as $key => $free_profile_data) : ?>
                                             <div class="col-lg-4  mb-3 mt-3 imgp">
+                                                <a href="<?= base_url().str_replace(' ','-',$paid_profile_data->title)."/info/".$this->friend->base64url_encode($paid_profile_data->id) ?>">
                                                 <div class="cuadro_intro_hover ">
                                                     <p style="text-align:center;">
                                                         <img src="<?= base_url('assets') ?>/images/portrait-1.jpg" class="img-responsive" alt="">
@@ -155,13 +156,14 @@
                                                         <div class="caption-text">
                                                             <h3><marquee><?= $free_profile_data->title ?></marquee></h3>
                                                             <p><b><?= $free_profile_data->city_name ?></b> </p>
-                                                            <p class="bgp">You will enjoy different kinds of body treatment and skin care treatments through facial and massage.</p>
+                                                            <hr/>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </a>
                                             </div>
                                         <?php endforeach ; ?>
-                                        
                                     </div>
                                 </div>
                             </div>

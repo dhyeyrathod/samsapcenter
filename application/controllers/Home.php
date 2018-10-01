@@ -11,12 +11,12 @@ class Home extends MY_Controller
 	}
 	public function index()
 	{
-		$this->set_current_locaation();
 		$data['category_key'] = $this->website->getRandomCategoryLimitedBySix();
 		$data['area_key'] = $this->website->getRandomAreaLimitedten($this->session->userdata('current_locaation'));
 		$data['services_key'] = $this->website->getRandomServicesLimitedten();
 		$data['paid_profile_key'] = $this->website->getPaidProfile($this->session->userdata('current_locaation'));
 		$data['free_profile_key'] = $this->website->getFreeProfiles($this->session->userdata('current_locaation'));
+		$data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
 		$this->load->view('home_view',$data);
 	}
 }

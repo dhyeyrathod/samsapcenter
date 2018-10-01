@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -105,24 +105,22 @@
                             <div class="col-lg-9 pl-0">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        
-
-                                        <?php foreach ($get_category_profile as $key => $get_category_profile_data) : ?>
+                                        <?php foreach ($get_cities_profiles as $key => $get_cities_profile_data) : ?>
                                             <div class="row align-items-center box-shadow border color-9 mb-3 mx-0 pt-3 pb-1">
-                                                <div class="col-sm-3"><a href="<?= base_url().str_replace(' ','-',$get_category_profile_data->title)."/info/".$this->friend->base64url_encode($get_category_profile_data->id) ?>"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-2.jpg"></a></div>
+                                                <div class="col-sm-3"><a href="book-details.html"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-2.jpg"></a></div>
                                                 <div class="col-sm-6 color-1">
-                                                    <p class="lead color-primary fw-600 mb-0"><?= $get_category_profile_data->title ?></p>
+                                                    <p class="lead color-primary fw-600 mb-0"><?= $get_cities_profile_data->title ?></p>
                                                     <div class="color-warning">
-                                                        <?php for ($i=1; $i  <= $get_category_profile_data->ranking ; $i++) { ?>
+                                                        <?php for ($i=1; $i <= $get_cities_profile_data->ranking ; $i++) { ?>
                                                             <span class="fa fa-star mr-1 color-warning"></span>
                                                         <?php } ?>
                                                     </div>
-                                                    <!-- <div class="color-5 mt-2"><a class="color-5 fs--1" href="tel:<?= $get_category_profile_data->contact_number ?>"> <span class="fa fa-volume-control-phone mr-1"></span><?= $get_category_profile_data->contact_number ?></a></div> -->
+                                                    <div class="color-5 mt-2"><a class="color-5 fs--1" href="tel:<?= $get_cities_profile_data->contact_number ?>"> <span class="fa fa-volume-control-phone mr-1"></span><?= $get_cities_profile_data->contact_number ?></a></div>
                                                     <div class="color-5 mt-2">
-                                                        <a class="color-5 fs--1" href="book-details.html"><span class="fa fa-address-book mr-1"></span><?= $get_category_profile_data->city_name ?></a>
+                                                        <a class="color-5 fs--1" href="book-details.html"><span class="fa fa-address-book mr-1"></span><?= $get_cities_profile_data->city_name ?></a>
                                                     </div>
                                                     <div class="color-5 mt-2">
-                                                        <a class="color-5 fs--1" href="book-details.html"> <span class="fa fa-arrow-circle-right mr-1"></span><?= $get_category_profile_data->category_name ?></a>
+                                                        <a class="color-5 fs--1" href="book-details.html"> <span class="fa fa-arrow-circle-right mr-1"></span><?= $get_cities_profile_data->category_name ?></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 color-1">

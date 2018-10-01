@@ -178,12 +178,6 @@ class Export_import extends MY_Controller
 		$reader = $objReader->load($file_name);
 
 		$profile_array = $this->profile_data($reader);
-		
-		// $respons = $this->validate_profile_excel($profile_array);
-
-		// echo "<pre>";
-		// print_r($respons);
-		// exit();
 
 		foreach ($profile_array as $key => $profile_data) {
 			$profile_data_respons = json_decode($this->admin->setExcelSpaProfile($profile_data['spa_profile'],$profile_data['excel_code']));
@@ -268,6 +262,7 @@ class Export_import extends MY_Controller
 			$profile['spa_profile']['email_id'] = $excel_array[$i][2];
 			$profile['spa_profile']['user_id'] = $excel_array[$i][3];
 			$profile['spa_profile']['status'] = $excel_array[$i][4];
+			$profile['spa_profile']['description'] = $excel_array[$i][15];
 			$profile['spa_profile_location']['address'] = $excel_array[$i][5];
 			$profile['spa_profile_location']['google_map_url'] = $excel_array[$i][6];
 			$profile['spa_profile_location']['country_name'] = $excel_array[$i][7];

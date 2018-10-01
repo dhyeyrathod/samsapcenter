@@ -44,6 +44,11 @@
                                 <input class="form-control" id="email_id" name="email_id" type="text" placeholder="Enter Email ID">
                                 <span id="email_id_error"></span>                              
                             </div>
+                            <div class="form-group">
+                                    <label for="exampleInputEmail1">hotels Description</label>
+                                    <textarea class="form-control" name="description" rows="3"></textarea>
+                                    <span class="text-danger"><?= form_error('description') ? form_error('description') : "" ?></span>
+                                </div>
                             <button class="btn btn-primary" type="button" id="submit_spa_master_details_submit">Next</button>
                         </div>
 
@@ -52,6 +57,14 @@
                                 <label for="exampleInputEmail1">Image Upload</label>
                                 <input class="form-control" id="image_to_upload" name="image_to_upload[]" multiple type="file">
                                 <span id="image_to_upload_error"></span>                             
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelect1">Payment Method Select</label>
+                                <select class="form-control" name="payment_method">
+                                    <option value="1">Paid</option>
+                                    <option value="2">Free</option>
+                                    <option>2</option>
+                                </select>
                             </div>
                             <button class="btn btn-primary" type="button" id="spa_image_tab_submit">Next</button>
                         </div>
@@ -136,6 +149,17 @@
                 $("#spa_profile_location_tab").hide();
                 $("#spa_profile_services_category_tab").hide();
             });
+            CKEDITOR.replace( 'description' );
+
+            var success_profile = '<?= $this->session->flashdata('success_profile') ? $this->session->flashdata('success_profile') : "" ?>';
+            var error_profile = '<?= $this->session->flashdata('error_profile') ? $this->session->flashdata('error_profile') : "" ?>';
+
+            if (error_profile) {
+                swal("Success", error_profile, "error");
+            }
+            if (success_profile) {
+                swal("Opss..!!", success_profile, "success");
+            }
         </script>
     </body>
 </html>

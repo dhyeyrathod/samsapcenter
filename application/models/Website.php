@@ -31,9 +31,9 @@ class Website extends CI_Model
 	}
 	public function getPaidProfile($current_location,$limit = 6)
 	{
-		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_payment_info.fk_payment_type_id = 1 AND spa_profile_payment_info.fk_payment_type_name = 'Paid' ";
+		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name , (SELECT image_name FROM spa_profile_images WHERE fk_profile_id = spa_profile.id ORDER BY RAND() LIMIT 1) as image , spa_profile.description as description from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_payment_info.fk_payment_type_id = 1 AND spa_profile_payment_info.fk_payment_type_name = 'Paid'";
 		if ($this->checkProfilePresentInCity($current_location) > 3) {
-			$sql_str .= " AND spa_profile_location.city_name = ".$this->db->escape($this->friend->get_Location()->city);
+			$sql_str .= " AND spa_profile_location.city_name = ".$this->db->escape($current_location);
 		}
 		$sql_str .= " ORDER BY RAND() LIMIT $limit";
 		return $this->db->query($sql_str)->result();
@@ -45,9 +45,9 @@ class Website extends CI_Model
 	}
 	public function getFreeProfiles($current_location,$limit = 9)
 	{
-		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_payment_info.fk_payment_type_id = 2 AND spa_profile_payment_info.fk_payment_type_name = 'Free' ";
+		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name , (SELECT image_name FROM spa_profile_images WHERE fk_profile_id = spa_profile.id ORDER BY RAND() LIMIT 1) as image , spa_profile.description as description from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_payment_info.fk_payment_type_id = 2 AND spa_profile_payment_info.fk_payment_type_name = 'Free'";
 		if ($this->checkProfilePresentInCity($current_location) > 3) {
-			$sql_str .= " AND spa_profile_location.city_name = ".$this->db->escape($this->friend->get_Location()->city);
+			$sql_str .= " AND spa_profile_location.city_name = ".$this->db->escape($current_location);
 		}
 		$sql_str .= " ORDER BY RAND() LIMIT $limit";
 		return $this->db->query($sql_str)->result();
@@ -86,5 +86,58 @@ class Website extends CI_Model
 		$sql_str .= " ORDER BY RAND()";
 		return $this->db->query($sql_str)->result();
 	}
-	
+	public function getServicesProfile($current_location , $services_id)
+	{
+		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name , spa_profile.contact_number as contact_number , spa_profile_services_category.fk_services_names as services_name , spa_profile.ranking as ranking , spa_profile_services_category.fk_category_name as category_name , (SELECT image_name FROM spa_profile_images WHERE fk_profile_id = spa_profile.id ORDER BY RAND() LIMIT 1) as image from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_services_category.fk_services_id = ".$this->db->escape($services_id);
+		if ($this->getProfilePresentInCurrentLocationByServices($current_location,$services_id) > 3) {
+			$sql_str .= " AND spa_profile_location.city_name = ".$this->db->escape($current_location);
+		}
+		$sql_str .= " ORDER BY RAND()";
+		return $this->db->query($sql_str)->result();
+	}
+	public function getProfilePresentInCurrentLocationByServices($current_location,$services_id)
+	{
+		$sql_str = "SELECT spa_profile_location.city_name AS city_name FROM spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_location.city_name = ".$this->db->escape($current_location)." AND spa_profile_services_category.fk_services_id = ".$this->db->escape($services_id);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function getSingleProfileDataById($profile_id)
+	{
+		$sql_str = "SELECT spa_profile.id as id , spa_profile.title as title,spa_profile.contact_number as contact_number , spa_profile.description as description , spa_profile.ranking as ranking , spa_profile.email_id as email_id , spa_profile_location.fk_counry_id as counry_id , spa_profile_location.country_name as country_name , spa_profile_location.fk_city_id as city_id , spa_profile_location.city_name as city_name ,spa_profile_location.address as address , spa_profile_location.google_map_url as google_map_url ,spa_profile_location.fk_area_id as area_id , spa_profile_location.area_name as area_name , spa_profile_location.pincode as pincode , spa_profile_services_category.fk_category_id as category_id , spa_profile_services_category.fk_category_name as category_name , spa_profile_services_category.fk_services_id as services_id , spa_profile_services_category.fk_services_names as services_names FROM spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile.id = ".$this->db->escape($profile_id);
+		return $this->db->query($sql_str)->row();
+	}
+	public function getImagesByProfileId($profile_id)
+	{
+		$sql_str = "SELECT * FROM spa_profile_images WHERE fk_profile_id = ".$this->db->escape($profile_id);
+		return $this->db->query($sql_str)->result();
+	}
+	public function getProfileByAreaId($area_id)
+	{
+		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name , spa_profile.contact_number as contact_number , spa_profile_services_category.fk_services_names as services_name , spa_profile.ranking as ranking , spa_profile_services_category.fk_category_name as category_name , (SELECT image_name FROM spa_profile_images WHERE fk_profile_id = spa_profile.id ORDER BY RAND() LIMIT 1) as image from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_location.fk_area_id = ".$this->db->escape($area_id)." ORDER BY RAND()";
+		return $this->db->query($sql_str)->result();
+	}
+	public function getCityNameByAreaId($area_id)
+	{
+		$sql_str = "SELECT * FROM area WHERE id = ".$this->db->escape($area_id);
+		return $this->db->query($sql_str)->row();
+	}
+	public function getReletedAreaByCitiesName($cities_name)
+	{
+		$sql_str = "SELECT * FROM area WHERE city_name = ".$this->db->escape($cities_name);
+		return $this->db->query($sql_str)->result();
+	}
+	public function getAllCitiesDataByCountryName($country_name)
+	{
+		$sql_str = "SELECT * FROM city WHERE country_name = ".$this->db->escape($country_name);
+		return $this->db->query($sql_str)->result();
+	}
+	public function getCityDataBYId($city_id)
+	{
+		$sql_str = "SELECT * FROM city WHERE id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->row();
+	}
+	public function getAllprofilesByCitiesId($city_id)
+	{
+		$sql_str = "SELECT spa_profile.id AS id , spa_profile.title AS title , spa_profile_location.city_name AS city_name , spa_profile.contact_number as contact_number , spa_profile_services_category.fk_services_names as services_name , spa_profile.ranking as ranking , spa_profile_services_category.fk_category_name as category_name , (SELECT image_name FROM spa_profile_images WHERE fk_profile_id = spa_profile.id ORDER BY RAND() LIMIT 1) as image from spa_profile JOIN spa_profile_location ON spa_profile.id = spa_profile_location.fk_profile_id JOIN spa_profile_payment_info ON spa_profile.id = spa_profile_payment_info.fk_profile_id JOIN spa_profile_services_category ON spa_profile.id = spa_profile_services_category.fk_profile_id WHERE spa_profile_location.fk_city_id = ".$this->db->escape($city_id)." ORDER BY RAND()";
+		return $this->db->query($sql_str)->result();
+	}
 }

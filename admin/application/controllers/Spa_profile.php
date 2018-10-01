@@ -16,6 +16,7 @@ class Spa_profile extends MY_Controller
 			$last_inserted_id = $this->admin->setSpaProfileDetails($this->input->post());
 			if ($last_inserted_id && is_numeric($last_inserted_id) && $this->admin->checkSpaIdIsPresent($last_inserted_id)) {
 				$this->admin->setSpaProfileLocationDetails($this->input->post(),$last_inserted_id);
+				$this->admin->setSpaPaymenntInfo($this->input->post(),$last_inserted_id);
 				if ($this->admin->setSpaProfileServicesCategoryDetails($this->input->post(),$last_inserted_id)) {
 					for ($i = 0 ; $i < count($_FILES['image_to_upload']['name']) ; $i++ ) {
 						$_FILES['file']['name']     	= $_FILES['image_to_upload']['name'][$i];

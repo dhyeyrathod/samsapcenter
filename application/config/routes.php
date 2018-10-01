@@ -55,3 +55,11 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['(:any)-in-(:any)/category/(:any)'] = 'profile/category';
+
+$route['(:any)-in-(:any)/services/(:any)'] = 'profile/services';
+
+$route['(:any)/info/(:any)'] = 'profile/details';
+
+$route['(:any)/(:any)/(:any)/area-location/(:any)'] = 'profile/area';
+
+$route['(:any)/(:any)/city-location/(:any)'] = 'profile/cities';

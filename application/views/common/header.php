@@ -12,13 +12,19 @@
             <ul class="navbar-nav fs-0 fw-700">
                 <li ><a href="free-listing.html">Free Listing</a></li>
                 <li><a href="advertise.html">Advertise</a></li>
+                <li class="has-dropdown"><a href="#">Cities</a>
+                    <ul class="dropdown fs--1">
+                        <?php foreach ($all_cities_key as $key => $all_cities_data) : ?>
+                            <li><a href="<?= base_url().str_replace(' ','-',$all_cities_data->country_name)."/".str_replace(' ','-',$all_cities_data->city_name)."/city-location/".$this->friend->base64url_encode($all_cities_data->id) ?>"><?= $all_cities_data->city_name ?></a></li>
+                        <?php endforeach ; ?>
+                    </ul>
+                </li>
                 <?php if ($this->session->userdata('user_id')) : ?>
                     <li><a href="<?= base_url('account/logout') ?>">Logout</a> </li>
                 <?php else : ?>
                     <li><a href="<?= base_url('account/login') ?>">Login</a> </li>
                     <li><a class="d-block" href="<?= base_url('account/registration') ?>">Signup</a></li>
                 <?php endif ; ?>
-                
             </ul>
         </div>
     </nav>

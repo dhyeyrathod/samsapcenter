@@ -152,12 +152,22 @@ class Admin extends CI_Model
 	public function setSpaProfileDetails($data)
 	{
 		if ($data['spa_id'] == 0) {
-			$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id'])." ,fk_user_id = 0 , created_date = NOW() , created_by = 0 , status = true";
+			$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id'])." ,fk_user_id = 0 , created_date = NOW() , created_by = 0 , status = true , description = ".$this->db->escape($data['description']);
 			return $this->db->query($sql_str) ? $this->db->insert_id() : false ;
 		} else {
 			
 			
 		}
+	}
+	public function setSpaPaymenntInfo($data,$last_spa_inserted_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_payment_info SET fk_profile_id = ".$this->db->escape($last_spa_inserted_id).",fk_payment_type_id = ".$this->db->escape($data['payment_method']).",fk_payment_type_name = ".$this->db->escape($this->getPaymentTypeById($data['payment_method'])->payment_type_name);
+		return $this->db->query($sql_str);
+	}
+	public function getPaymentTypeById($payment_id)
+	{
+		$sql_str = "SELECT * FROM payment_info WHERE id = ".$this->db->escape($payment_id);
+		return $this->db->query($sql_str)->row();
 	}
 	public function checkSpaIdIsPresent($spa_id)
 	{
@@ -251,7 +261,7 @@ class Admin extends CI_Model
 	public function setExcelSpaProfile($data,$excel_code)
 	{
 		$this->db->trans_begin();
-		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",fk_user_id = ".$this->db->escape($data['user_id']).",created_date = NOW() , created_by = 0 , status = ".$this->db->escape($data['status']);
+		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",fk_user_id = ".$this->db->escape($data['user_id']).",created_date = NOW() , created_by = 0 , status = ".$this->db->escape($data['status']).",description = ".$this->db->escape($data['description']);
 		if ($this->db->query($sql_str)) {
 			$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
 		} else {

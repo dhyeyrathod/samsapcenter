@@ -3,6 +3,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--  -->
+        <!--    Document Title-->
+        <!-- =============================================-->
         <title>Spa in India, Spa Treatments in India</title>
         <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <?php $this->load->view('common/css') ?>
@@ -20,7 +23,7 @@
                 </section>
                 <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
-                        <h1 class="gglsrc lng_commn">Beauty Spas in Delhi-NCR	</h1>
+                        <h1 class="gglsrc lng_commn">Spas in Delhi-NCR	</h1>
                         <div class="row">
                             <div class="col-lg-2 pl-3 pr-0 pb-0 pt-0"><a class="sortbyresult" href="#">SORT RESULTS BY</a><i class="left_arrow"></i></div>
                             <div class="col-lg-10 row pl-0 pr-0 pb-0 pt-0">
@@ -88,7 +91,7 @@
                                     <hr class="color-9 my-2">
                                     <ul>
                                         <?php foreach ($area_key as $key => $area_data) : ?>
-                                            <li><a href="<?= base_url().str_replace(' ','',$area_data->country_name)."/".str_replace(' ','',$area_data->city_name)."/".str_replace(' ','-',$area_data->area_name)."/area-location/".$this->friend->base64url_encode($area_data->id) ?>"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
+                                            <li><a href="all-area.html"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
                                         <?php endforeach ; ?>
                                     </ul>
                                 </div>
@@ -105,32 +108,30 @@
                             <div class="col-lg-9 pl-0">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        
-
-                                        <?php foreach ($get_category_profile as $key => $get_category_profile_data) : ?>
-                                            <div class="row align-items-center box-shadow border color-9 mb-3 mx-0 pt-3 pb-1">
-                                                <div class="col-sm-3"><a href="<?= base_url().str_replace(' ','-',$get_category_profile_data->title)."/info/".$this->friend->base64url_encode($get_category_profile_data->id) ?>"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-2.jpg"></a></div>
-                                                <div class="col-sm-6 color-1">
-                                                    <p class="lead color-primary fw-600 mb-0"><?= $get_category_profile_data->title ?></p>
-                                                    <div class="color-warning">
-                                                        <?php for ($i=1; $i  <= $get_category_profile_data->ranking ; $i++) { ?>
-                                                            <span class="fa fa-star mr-1 color-warning"></span>
-                                                        <?php } ?>
-                                                    </div>
-                                                    <!-- <div class="color-5 mt-2"><a class="color-5 fs--1" href="tel:<?= $get_category_profile_data->contact_number ?>"> <span class="fa fa-volume-control-phone mr-1"></span><?= $get_category_profile_data->contact_number ?></a></div> -->
-                                                    <div class="color-5 mt-2">
-                                                        <a class="color-5 fs--1" href="book-details.html"><span class="fa fa-address-book mr-1"></span><?= $get_category_profile_data->city_name ?></a>
-                                                    </div>
-                                                    <div class="color-5 mt-2">
-                                                        <a class="color-5 fs--1" href="book-details.html"> <span class="fa fa-arrow-circle-right mr-1"></span><?= $get_category_profile_data->category_name ?></a>
-                                                    </div>
+                                        <?php foreach ($get_services_profile as $key => $get_services_profile_data) : ?>
+                                        <div class="row align-items-center box-shadow border color-9 mb-3 mx-0 pt-3 pb-1">
+                                            <div class="col-sm-3"><a href="book-details.html"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-1.jpg"></a></div>
+                                            <div class="col-sm-6 color-1">
+                                                <p class="lead color-primary fw-600 mb-0"><?= $get_services_profile_data->title ?></p>
+                                                <div class="color-warning">
+                                                    <?php for ($i=1; $i  <= $get_services_profile_data->ranking ; $i++) { ?>
+                                                        <span class="fa fa-star mr-1 color-warning"></span>
+                                                    <?php } ?>
                                                 </div>
-                                                <div class="col-sm-3 color-1">
-                                                    <a href="booking.html" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
-                                                    <span class="fa fa-arrow-circle-right color-warning"></span> Book Online</a>
+                                                <div class="color-5 mt-2"><a class="color-5 fs--1" href="tel:<?= $get_services_profile_data->contact_number ?>"> <span class="fa fa-volume-control-phone mr-1"></span><?= $get_services_profile_data->contact_number ?></a></div>
+                                                <div class="color-5 mt-2">
+                                                    <a class="color-5 fs--1" href="book-details.html"><span class="fa fa-address-book mr-1"></span><?= $get_services_profile_data->city_name ?></a>
                                                 </div>
-                                                <div class="rating"> <a href="book-details.html"><span class="fa fa-star mr-1 color-warning"></span> Click here to view your <b>friends rating</b></a></div>
+                                                <div class="color-5 mt-2">
+                                                    <a class="color-5 fs--1" href="book-details.html"> <span class="fa fa-arrow-circle-right mr-1"></span><?= $get_services_profile_data->services_name ?></a>
+                                                </div>
                                             </div>
+                                            <div class="col-sm-3 color-1">
+                                                <a href="booking.html" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
+                                                <span class="fa fa-arrow-circle-right color-warning"></span> Book Online</a>
+                                            </div>
+                                            <div class="rating"> <a href="book-details.html"><span class="fa fa-star mr-1 color-warning"></span> Click here to view your <b>friends rating</b></a></div>
+                                        </div>
                                         <?php endforeach ; ?>
                                         <nav class="font-1 mt-5" aria-label="Page navigation example">
                                             <ul class="pagination justify-content-center pagination-warning">
