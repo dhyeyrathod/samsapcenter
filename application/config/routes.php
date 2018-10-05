@@ -55,11 +55,22 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['(:any)-in-(:any)/category/(:any)'] = 'profile/category';
+$route['(:any)-in-(:any)/category/(:any)/page'] = 'profile/category';
+$route['(:any)-in-(:any)/category/(:any)/page/(:num)'] = 'profile/category';
+
 
 $route['(:any)-in-(:any)/services/(:any)'] = 'profile/services';
+$route['(:any)-in-(:any)/services/(:any)/page'] = 'profile/services';
+$route['(:any)-in-(:any)/services/(:any)/page/(:num)'] = 'profile/services';
+
+
+$route['(:any)/(:any)/(:any)/area-location/(:any)'] = 'profile/area';
+$route['(:any)/(:any)/(:any)/area-location/(:any)/page'] = 'profile/area';
+$route['(:any)/(:any)/(:any)/area-location/(:any)/page/(:num)'] = 'profile/area';
 
 $route['(:any)/info/(:any)'] = 'profile/details';
 
-$route['(:any)/(:any)/(:any)/area-location/(:any)'] = 'profile/area';
 
 $route['(:any)/(:any)/city-location/(:any)'] = 'profile/cities';
+$route['(:any)/(:any)/city-location/(:any)/page'] = 'profile/cities';
+$route['(:any)/(:any)/city-location/(:any)/page/(:num)'] = 'profile/cities';

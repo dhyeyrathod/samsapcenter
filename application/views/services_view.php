@@ -91,7 +91,7 @@
                                     <hr class="color-9 my-2">
                                     <ul>
                                         <?php foreach ($area_key as $key => $area_data) : ?>
-                                            <li><a href="all-area.html"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
+                                            <li><a href="<?= base_url().str_replace(' ','',$area_data->country_name)."/".str_replace(' ','',$area_data->city_name)."/".str_replace(' ','-',$area_data->area_name)."/area-location/".$this->friend->base64url_encode($area_data->id) ?>"><span class="fa fa-map-marker"></span> &nbsp <?= $area_data->area_name ?></a></li>
                                         <?php endforeach ; ?>
                                     </ul>
                                 </div>
@@ -110,7 +110,7 @@
                                     <div class="col-lg-12">
                                         <?php foreach ($get_services_profile as $key => $get_services_profile_data) : ?>
                                         <div class="row align-items-center box-shadow border color-9 mb-3 mx-0 pt-3 pb-1">
-                                            <div class="col-sm-3"><a href="book-details.html"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-1.jpg"></a></div>
+                                            <div class="col-sm-3"><a href="<?= base_url().str_replace(' ','-',$get_services_profile_data->title)."/info/".$this->friend->base64url_encode($get_services_profile_data->id) ?>"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-1.jpg"></a></div>
                                             <div class="col-sm-6 color-1">
                                                 <p class="lead color-primary fw-600 mb-0"><?= $get_services_profile_data->title ?></p>
                                                 <div class="color-warning">
@@ -135,12 +135,13 @@
                                         <?php endforeach ; ?>
                                         <nav class="font-1 mt-5" aria-label="Page navigation example">
                                             <ul class="pagination justify-content-center pagination-warning">
-                                                <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-left"></i></span><span class="sr-only">Previous</span></a></li>
+                                                <?= $this->pagination->create_links(); ?>
+                                                <!-- <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-left"></i></span><span class="sr-only">Previous</span></a></li>
                                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                 <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right"></i></span><span class="sr-only">Next</span></a></li>
+                                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right"></i></span><span class="sr-only">Next</span></a></li> -->
                                             </ul>
                                         </nav>
                                     </div>
