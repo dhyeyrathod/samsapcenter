@@ -1,3 +1,6 @@
+<script type="text/javascript">
+	var base_url = '<?= base_url() ?>';
+</script>
 <script src="<?= base_url('assets') ?>/js/modernizr.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets') ?>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<?= base_url('assets') ?>/js/popper.min.js" type="text/javascript"></script>

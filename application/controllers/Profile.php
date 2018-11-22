@@ -45,6 +45,7 @@ class Profile extends MY_Controller
 	{
 		$services_id = $this->friend->base64url_decode($this->uri->segment(3));
 		$data['category_key'] = $this->website->getRandomCategoryLimitedBySix();
+		
 		$data['area_key'] = $this->website->getRandomAreaLimitedten($this->session->userdata('current_locaation'));
 		$data['services_key'] = $this->website->getRandomServicesLimitedten();
 		

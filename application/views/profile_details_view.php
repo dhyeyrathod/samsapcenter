@@ -218,7 +218,11 @@
                                         </div>
                                         <div class="background-10 p-3  rounded mb-3">
                                             <b class="mb-2">Add Review</b>
-                                            <textarea></textarea>
+                                            <form>
+                                                <input type="text" placeholder="name" name="name">
+                                                <input type="number" placeholder="ranking" name="ranking">
+                                                <textarea placeholder="comments"></textarea>
+                                            </form>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12"><a href="#" class="btn btn-info mb-4">Submit</a></div>

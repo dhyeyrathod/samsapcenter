@@ -14,19 +14,30 @@
                         <?php $this->load->view('common/header') ?>
                         <div class="flexslider flexslider-simple">
                             <div class="fg">
-                                <form class="zform mt-3" _lpchecked="1">
+                                    <?= form_open('search') ?>
                                     <div class="row">
                                         <div class=" col-lg-4"> 
-                                            <input class="form-control" type="text" placeholder="City Search" required="">
+                                            <input list="browsers" autocomplete="off" class="form-control" id="query" type="text" name="query" placeholder="Search">
+                                            <datalist id="browsers">
+                                                <?php foreach ($all_category_key as $key => $category_data) : ?>
+                                                    <option value="<?= $category_data->category_name ?>">
+                                                <?php endforeach ; ?>
+                                            </datalist>
                                         </div>
                                         <div class=" col-lg-3">
-                                            <select class="form-control" >
-                                                <option>Services</option>
+                                            <select class="form-control" name="services">
+                                                <option value="0">---Select Services---</option>
+                                                <?php foreach ($search_services as $key => $search_services_data) : ?>
+                                                    <option value="<?= $search_services_data->id ?>"><?= $search_services_data->services_name ?></option>
+                                                <?php endforeach ; ?>
                                             </select>
                                         </div>
                                         <div class=" col-lg-3">
-                                            <select class="form-control">
-                                                <option>Area</option>
+                                            <select class="form-control" name="city">
+                                                <option value="0">---Select City---</option>
+                                                <?php foreach ($get_city_by_curent_country as $key => $get_city_by_curent_country_data) : ?>
+                                                    <option value="<?= $get_city_by_curent_country_data->id ?>"><?= $get_city_by_curent_country_data->city_name ?></option>
+                                                <?php endforeach ; ?>
                                             </select>
                                         </div>
                                         <div class=" col-lg-2"> 
@@ -174,5 +185,32 @@
             </div>
         </main>
         <?php $this->load->view('common/js') ?>
+        <!-- <script type="text/javascript">
+            $('#query').keydown(function (e){
+                var query_str = $('#query').val();
+                var ajax_url = base_url + "home/search_query_ajax_url";
+                $.ajax({
+                    type: "POST",
+                    url: ajax_url,
+                    data: {query_str:query_str},
+                    success : function (respons) {
+                        var respons_array = jQuery.parseJSON(respons);
+                        if (respons_array.status == 'success') {
+                            var html_str = '';
+                            for(var i=0 ; i < respons_array.data.length ; i++)
+                            {
+                                html_str += '<li class="list-group-item">' + respons_array.data[i].category_name + '</li>';
+                            }
+                            $('#suggetion_div').html(html_str);
+                        } else {
+                            $('#suggetion_div').html('');
+                        }
+                    },
+                    error : function (respons) {
+                        
+                    }
+                });
+            });
+        </script> -->
     </body>
 </html>
