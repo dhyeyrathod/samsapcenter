@@ -26,19 +26,12 @@ class Profile extends MY_Controller
 		$data['category_key'] = $this->website->getRandomCategoryLimitedBySix();
 		$data['area_key'] = $this->website->getRandomAreaLimitedten($this->session->userdata('current_locaation'));
 		$data['services_key'] = $this->website->getRandomServicesLimitedten();
-		
 		$data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
-
 		$config['base_url'] = base_url().str_replace(' ','-',$this->website->getCategoryById($category_id)->category_name)."-in-".$this->session->userdata('current_locaation')."/category/".$this->friend->base64url_encode($category_id)."/page/" ;
-
 		$config['total_rows'] = $this->website->getProfileByCategoryCount($this->session->userdata('current_locaation'),$category_id);
-
 		$config['per_page'] = 3;
-
 		$data['get_category_profile'] = $this->website->getProfileByCategory($this->session->userdata('current_locaation'),$category_id,$config['per_page'],$this->uri->segment(5)?$this->uri->segment(5):0);
-
 		$this->pagination->initialize($config);
-
 		$this->load->view('category_view',$data);
 	}
 	public function services()

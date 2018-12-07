@@ -12,4 +12,8 @@ class Members extends MY_Controller
 	{
 		$this->load->view('dashboard_view');
 	}
+	public function new_profile()
+	{
+		$this->load->view('new_profile_view');
+	}
 }

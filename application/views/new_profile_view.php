@@ -8,158 +8,6 @@
         <meta name="theme-color" content="#ffffff">
         <?php $this->load->view('common/css') ?>
     </head>
-    <style type="text/css">
-        iframe#_hjRemoteVarsFrame {
-            display: none !important;
-            width: 1px !important;
-            height: 1px !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-        }
-    </style>
-    <style>
-        /*------------- Form ---------------*/
-        
-        .nb-form {
-            position: fixed;
-            z-index: 9999;
-            width: 300px;
-            background: #FFF;
-            right: 20px;
-            bottom: -351px;
-            transition: all .8s cubic-bezier(.22, .67, .43, 1.22) .2s;
-            border-radius: 10px 10px 0 0;
-            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        }
-        
-        .nb-form:hover {
-            bottom: 0px;
-        }
-        .fa {
-
-    color: inherit !important;
-}
-        /*-- User Icon --*/
-        
-        .nb-form .user-icon {
-            position: absolute;
-            top: -49px;
-            right: 12px;
-            display: block;
-            width: 58px;
-            margin: 20px auto 15px;
-            border-radius: 100%;
-        }
-        /*-- Title --*/
-        
-        .nb-form .title {
-            background: #2a3855;
-            font-size: 18px !important;
-            padding: 15px 18px !important;
-            color: #e6ab45 !important;
-            border-radius: 10px 10px 0 0;
-            text-align: center;
-            font-weight: bold;
-        }
-        /*-- Text --*/
-        
-        .nb-form p {
-            font-size: 13px;
-            margin: 0;
-            padding: 15px;
-            color: #666;
-        }
-        
-        .nb-form p.message {
-            margin-left: 7px;
-        }
-        /*-- Form Elements --*/
-        
-        .nb-form form {
-            padding: 0 15px 15px 15px;
-        }
-        
-        .nb-form input,
-        .nb-form textarea {
-            font-family: Tahoma, Geneva, sans-serif;
-            font-size: 12px;
-            width: 254px;
-            max-width: 254px;
-            margin-bottom: 10px;
-            margin-left: 7px;
-            padding: 6px;
-            border: none;
-            border-radius: 4px;
-            color: #999;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .nb-form input:focus,
-        .nb-form textarea:focus {
-            outline: none;
-            box-shadow: none;
-        }
-        
-        .nb-form input[type='submit'] {
-            display: block;
-            width: 120px;
-            margin: 0 auto;
-            padding: 0 20px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all .4s ease;
-            color: #2a3855 !important;
-            border: none;
-        }
-        
-        .nb-form input[type='submit']:hover {
-            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 7px 0 rgba(0, 0, 0, 0.02), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nb-form textarea {
-            min-height: 110px;
-        }
-        
-        .nb-form::-webkit-input-placeholder {
-            color: #ccb0b0;
-        }
-        
-        .nb-form::-moz-placeholder {
-            color: #ccb0b0;
-        }
-        
-        .nb-form:-ms-input-placeholder {
-            color: #ccb0b0;
-        }
-        
-        .nb-form:-moz-placeholder {
-            color: #ccb0b0;
-        }
-        
-        .nb-form input[type='submit'] {
-            background: #e6ab45;
-        }
-        
-        @media screen and (max-width: 676px) {
-            .nb-form:hover .user-icon {
-                display: none;
-            }
-            .nb-form .message {
-                display: none;
-            }
-            .nb-form form {
-                padding-top: 15px;
-            }
-            .nb-form {
-                right: 50%;
-                bottom: -320px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
 </head>
 
 <body data-spy="scroll" data-offset="60">
@@ -224,79 +72,12 @@
                     </div>
                     <div class="flexslider flexslider-simple">
                         <div class="fg">
-                            <form action="http://samspacenter.com/search" method="post" accept-charset="utf-8">
+                            <form action="" method="post" accept-charset="utf-8">
                                 <div class="row">
                                     <div class=" col-lg-3 mb-2">
                                         <select id="country_select" name="country" class="form-control">
                                             <option value="0">---Select Country---</option>
-                                            <option value="10">Argentina</option>
-                                            <option value="14">Austria</option>
-                                            <option value="18">Bangladesh</option>
-                                            <option value="20">Belarus</option>
-                                            <option value="21">Belgium</option>
-                                            <option value="26">Bolivia</option>
-                                            <option value="30">Brazil</option>
-                                            <option value="33">Bulgaria</option>
-                                            <option value="36">Cambodia</option>
-                                            <option value="38">Canada</option>
-                                            <option value="44">China</option>
-                                            <option value="47">Colombia</option>
-                                            <option value="56">Cyprus</option>
-                                            <option value="58">Denmark</option>
-                                            <option value="244">England</option>
-                                            <option value="68">Estonia</option>
-                                            <option value="74">Finland</option>
-                                            <option value="75">France</option>
-                                            <option value="81">Georgia</option>
-                                            <option value="82">Germany</option>
-                                            <option value="85">Greece</option>
-                                            <option value="98">Hong Kong</option>
-                                            <option value="99">Hungary</option>
-                                            <option value="101">India</option>
-                                            <option value="102">Indonesia</option>
-                                            <option value="105">Ireland</option>
-                                            <option value="242">Italy</option>
-                                            <option value="107">Italy</option>
-                                            <option value="109">Japan</option>
-                                            <option value="120">Latvia</option>
-                                            <option value="126">Lithuania</option>
-                                            <option value="127">Luxembourg</option>
-                                            <option value="132">Malaysia</option>
-                                            <option value="135">Malta</option>
-                                            <option value="142">Mexico</option>
-                                            <option value="145">Monaco</option>
-                                            <option value="247">Netherlands</option>
-                                            <option value="243">New Zealand</option>
-                                            <option value="160">Nigeria</option>
-                                            <option value="164">Norway</option>
-                                            <option value="166">Pakistan</option>
-                                            <option value="169">Panama</option>
-                                            <option value="172">Peru</option>
-                                            <option value="246">Philippines</option>
-                                            <option value="175">Poland</option>
-                                            <option value="176">Portugal</option>
-                                            <option value="178">Qatar</option>
-                                            <option value="180">Romania</option>
-                                            <option value="181">Russia</option>
-                                            <option value="252">sam spa r</option>
-                                            <option value="251">sdfdsf g df</option>
-                                            <option value="193">Serbia</option>
-                                            <option value="196">Singapore</option>
-                                            <option value="197">Slovakia</option>
-                                            <option value="202">South Africa</option>
-                                            <option value="245">South Korea</option>
-                                            <option value="205">Spain</option>
-                                            <option value="206">Sri Lanka</option>
-                                            <option value="211">Sweden</option>
-                                            <option value="212">Switzerland</option>
-                                            <option value="217">Thailand</option>
-                                            <option value="223">Turkey</option>
-                                            <option value="239">UAE</option>
-                                            <option value="227">Uganda</option>
-                                            <option value="228">Ukraine</option>
-                                            <option value="230">United Kingdom</option>
-                                            <option value="231">United States</option>
-                                            <option value="238">Vietnam</option>
+                                            
                                         </select>
                                     </div>
                                     <div class=" col-lg-3 mb-2">
@@ -308,24 +89,6 @@
                                         <select name="category" class="form-control">
                                             <option value="0">---Select Category---</option>
                                             <option value="1">Beauty Parlours</option>
-                                            <option value="2">Beauty Services</option>
-                                            <option value="3">Bridal Makeup</option>
-                                            <option value="4">Bridegroom Makeup</option>
-                                            <option value="5">Salons</option>
-                                            <option value="6">Spas</option>
-                                            <option value="7">Unisex Salons</option>
-                                            <option value="8">Beauty Spas</option>
-                                            <option value="9">Ayurvedic Body Massage Centres</option>
-                                            <option value="10">Body Massage</option>
-                                            <option value="11">Gyms</option>
-                                            <option value="12">Night Clubs</option>
-                                            <option value="13">Thai Spa</option>
-                                            <option value="14">Beauty</option>
-                                            <option value="15">Health Care</option>
-                                            <option value="17">Salon &amp; Day Spa</option>
-                                            <option value="18">Dermatologists</option>
-                                            <option value="19">East</option>
-                                            <option value="20">Mall</option>
                                         </select>
                                     </div>
                                     <div class=" col-lg-3">
@@ -366,40 +129,6 @@
                     </div>
                 </div>
             </section>
-
-
-        <!-- <section class="dashboard-menu dashboard-menu-2 light-blue">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                     <div class="dashboard-menu-container">
-                        <ul>
-                           <li class="active">
-                              <a href="user-profile.html">
-                                 <div class="menue-name"> Profile </div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="user-edit-profile.html">
-                                 <div class="menue-name">Edit Profile</div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="add-profile.html">
-                                 <div class="menue-name">Add Profile</div>
-                              </a>
-                           </li>
-                           
-                           
-                           
-                           
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </section> -->
-
             <section class="dashboard light-blue">
             <div class="container">
                <div class="row">

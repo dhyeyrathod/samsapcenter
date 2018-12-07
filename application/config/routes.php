@@ -74,3 +74,5 @@ $route['(:any)/info/(:any)'] = 'profile/details';
 $route['(:any)/(:any)/city-location/(:any)'] = 'profile/cities';
 $route['(:any)/(:any)/city-location/(:any)/page'] = 'profile/cities';
 $route['(:any)/(:any)/city-location/(:any)/page/(:num)'] = 'profile/cities';
+
+

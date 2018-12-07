@@ -22,15 +22,4 @@ class Home extends MY_Controller
 		$data['get_city_by_curent_country'] = $this->website->getCityByCurrentLocationCountryName($this->session->userdata('current_locaation_country'));
 		$this->load->view('home_view',$data);
 	}
-	// public function search_query_ajax_url()
-	// {
-	// 	$search_query = $this->input->post('query_str');
-	// 	$search_result = $this->website->getCategoryBySearchStr($search_query);
-	// 	if (isset($search_result)) {
-	// 		echo json_encode(array('status' => 'success' , 'data'=>$search_result));
-	// 	} else {
-	// 		echo json_encode(array('status' => 'failure'));
-	// 	}
-		
-	// }
 }

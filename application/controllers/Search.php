@@ -20,9 +20,7 @@ class Search extends MY_Controller
 			$this->filter_search['search_query'] = $this->input->post('query');
 			$this->filter_search['services_id'] = $this->input->post('services');
 			$this->filter_search['city_id'] = $this->input->post('city');
-			
 			$this->data['search_result_key'] = $this->website->getQuerySearchResult($this->filter_search);
-
 			$this->load->view('search_view',$this->data);
 		} else {
 			redirect(base_url());
