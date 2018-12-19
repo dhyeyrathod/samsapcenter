@@ -215,4 +215,55 @@ class Website extends CI_Model
 		$sql_str = "SELECT * FROM category";
 		return $this->db->query($sql_str)->result();
 	}
+	public function getAllCountry()
+	{
+		$sql_str = "SELECT * FROM country";
+		return $this->db->query($sql_str)->result();
+	}
+	public function checkCityPresent($country_id)
+	{
+		$sql_str = "SELECT * FROM city WHERE fk_country_id = ".$this->db->escape($country_id);
+		return $this->db->query($sql_str)->num_rows();
+	}
+	public function getAllCityByCountryId($country_id)
+	{
+		$sql_str = "SELECT * FROM city WHERE fk_country_id = ".$this->db->escape($country_id);
+		return $this->db->query($sql_str)->result();
+	}
+	public function setProfile($data , $user_id)
+	{
+		$this->db->trans_begin();
+		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",description = ".$this->db->escape($data['description']).",status = TRUE , fk_user_id = ".$this->db->escape($user_id).",created_date = NOW() , created_by = ".$this->db->escape($user_id);
+		if ($this->db->query($sql_str)) {
+			$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
+		} else {
+			$respons = json_encode(array('status' => 'failure'));
+		}
+		return $respons ;
+	}
+	public function getAllAreasByCityId($city_id)
+	{
+		$sql_str = "SELECT * FROM area WHERE fk_city_id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->result();
+	}
+	public function setSpaProfileLocation($data , $userr_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($userr_id).",fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	created_by = ".$this->db->escape($userr_id).",created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode']);
+		return $this->db->query($sql_str);
+	}
+	private function getCountryNameById($country_id)
+	{
+		$sql_str = "SELECT country_name FROM country WHERE id = ".$this->db->escape($country_id);
+		return $this->db->query($sql_str)->row()->country_name;
+	}
+	private function getCityNameById($city_id)
+	{
+		$sql_str = "SELECT city_name FROM city WHERE id = ".$this->db->escape($city_id);
+		return $this->db->query($sql_str)->row()->city_name;
+	}
+	private function getAreaNameById($area_id)
+	{
+		$sql_str = "SELECT area_name FROM area WHERE id = ".$this->db->escape($area_id);
+		return $this->db->query($sql_str)->row()->area_name;
+	}
 }

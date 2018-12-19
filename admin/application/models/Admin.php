@@ -46,7 +46,7 @@ class Admin extends CI_Model
 	}
 	public function getAllCity()
 	{
-		$sql_str = "SELECT city.id as id ,country.id as country_id, city.created_date , country_name , city_name FROM city INNER JOIN country ON city.fk_country_id = country.id";
+		$sql_str = "SELECT city.id as id ,country.id as country_id, city.created_date AS created_date , country.country_name AS country_name , city.city_name AS city_name FROM city INNER JOIN country ON city.fk_country_id = country.id";
 		return $this->db->query($sql_str)->result();
 	}
 	public function deleteCity($city_id)

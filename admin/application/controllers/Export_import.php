@@ -66,14 +66,15 @@ class Export_import extends MY_Controller
 			if ($this->input->post('option') == "profile") {
 				$file_name = $_FILES['excel_sheet']['tmp_name'];
 				if ($this->file_type_check($file_name)) {
-					$respons = $this->profile_import($file_name);
-					echo "<pre>";
-					print_r($respons);
-					exit();
+					$respons = json_decode($this->profile_import($file_name));
+					if ($respons->status == "failed") {
+						$data['error'] = $respons->message ;
+					} else {
+						$data['success'] = $respons->message ;
+					}
 				} else {
-					
+					$data['error'] = "File is not in propar formate..!!";	
 				}
-				exit();
 			}
 		}
 		$data['empty'] = '';
@@ -179,6 +180,13 @@ class Export_import extends MY_Controller
 
 		$profile_array = $this->profile_data($reader);
 
+		$respons = $this->validate_profile_excel($profile_array);
+
+		if ($respons) {
+			return json_encode(array("Validation"=>"Error","status"=>"failed",'message'=>$respons));
+			exit();
+		}
+
 		foreach ($profile_array as $key => $profile_data) {
 			$profile_data_respons = json_decode($this->admin->setExcelSpaProfile($profile_data['spa_profile'],$profile_data['excel_code']));
 			if ($profile_data_respons->status == "success") {
@@ -189,9 +197,7 @@ class Export_import extends MY_Controller
 					return json_encode(array("Validation"=>'Error',"status"=>"failed" , 'message'=>'error has been ocured'));
 				} 
 			}
-
 		}
-
 	}
 
 
@@ -256,7 +262,7 @@ class Export_import extends MY_Controller
 
 		$excel_array = $objWorksheet->toArray();
 
-		for ($i = 1 ; $i < $highestRow - 1 ; $i++){
+		for ($i = 1 ; $i < $highestRow - 1 ; $i++) {
 			$profile['spa_profile']['title'] = $excel_array[$i][0];
 			$profile['spa_profile']['contact_number'] = $excel_array[$i][1];
 			$profile['spa_profile']['email_id'] = $excel_array[$i][2];
