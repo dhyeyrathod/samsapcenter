@@ -21,7 +21,7 @@ class Account extends MY_Controller
 					$setSessionData['username']=$getUserData->username;$setSessionData['email']=$getUserData->email ;
 					$setSessionData['contact_number']=$getUserData->contact_number;$setSessionData['user_id']=$getUserData->id;
 					$this->session->set_userdata($setSessionData);
-					$this->session->set_flashdata('success','Login Successfully..!!');redirect('account/login');
+					$this->session->set_flashdata('success','Login Successfully..!!');redirect('members/dashboard');
 				} else {
 					$this->session->set_flashdata('error','Email and password is invalid');
 					redirect('account/login');

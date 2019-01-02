@@ -8,6 +8,7 @@ class Members extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model('website');
+		if (!$this->session->userdata('user_id')) : redirect('account/login'); endif ;  
 	}
 	public function dashboard()
 	{
@@ -16,12 +17,30 @@ class Members extends MY_Controller
 	public function new_profile()
 	{
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
-			$this->response = json_decode($this->website->setProfile($this->input->post(),1));
+			$this->response = json_decode($this->website->setProfile($this->input->post(),$this->session->userdata('user_id')));
 			if ($this->response->status == "success") {
-				echo "<pre>";print_r($this->input->post());exit();
-				$this->website->setSpaProfileLocation($this->input->post(),1);
-			}
+				$this->website->setSpaProfileLocation($this->input->post(),$this->session->userdata('user_id'),$this->response->last_inserted_id);
+				$this->website->setSpaProfileServicesCategory($this->input->post(),$this->session->userdata('user_id'),$this->response->last_inserted_id);
+				$this->profile_data_response = json_decode($this->website->setProfilePaymentDetails($this->input->post(),$this->session->userdata('user_id'),$this->response->last_inserted_id));
+				if ($this->profile_data_response->status == TRUE) {
+					for($i = 0 ; $i < count($_FILES['image_to_upload']['name']) ; $i++ ) {
+						$_FILES['file']['name']     	= $_FILES['image_to_upload']['name'][$i];
+		                $_FILES['file']['type']     	= $_FILES['image_to_upload']['type'][$i];
+		                $_FILES['file']['tmp_name'] 	= $_FILES['image_to_upload']['tmp_name'][$i];
+		                $_FILES['file']['error']     	= $_FILES['image_to_upload']['error'][$i];
+		                $_FILES['file']['size']     	= $_FILES['image_to_upload']['size'][$i];
+		                $this->load->library('upload', $this->friend->profile_image_upload());
+		                if ($this->upload->do_upload('file')) {
+		                	$this->website->setProfileImage($this->upload->data('file_name'),$this->response->last_inserted_id,$this->session->userdata('user_id'));
+		                }
+					}
+				}
+			};
+			exit();
 		}
+		$this->data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
+		$this->data['category_key'] = $this->website->getRandomCategoryLimitedBySix(100);
+		$this->data['services_key'] = $this->website->getRandomServicesLimitedten(100);
 		$this->data['country_data'] = $this->website->getAllCountry();
 		$this->load->view('add_new_profile',$this->data);
 	}

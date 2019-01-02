@@ -9,6 +9,7 @@ class Website extends CI_Model
 		parent::__construct();
 		$this->load->helper('friend');
 		$this->friend = new friend ;
+		$this->db->trans_strict(FALSE);
 	}
 	public function getRandomCategoryLimitedBySix($limit = 6)
 	{
@@ -232,7 +233,7 @@ class Website extends CI_Model
 	}
 	public function setProfile($data , $user_id)
 	{
-		$this->db->trans_begin();
+		$this->db->trans_begin();	
 		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",description = ".$this->db->escape($data['description']).",status = TRUE , fk_user_id = ".$this->db->escape($user_id).",created_date = NOW() , created_by = ".$this->db->escape($user_id);
 		if ($this->db->query($sql_str)) {
 			$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
@@ -246,9 +247,26 @@ class Website extends CI_Model
 		$sql_str = "SELECT * FROM area WHERE fk_city_id = ".$this->db->escape($city_id);
 		return $this->db->query($sql_str)->result();
 	}
-	public function setSpaProfileLocation($data , $userr_id)
+	public function setSpaProfileLocation($data , $user_id , $profile_id)
 	{
-		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($userr_id).",fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	created_by = ".$this->db->escape($userr_id).",created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode']);
+		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($profile_id).",fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	created_by = ".$this->db->escape($user_id).",created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode']);$this->db->query($sql_str);
+	}
+	public function setSpaProfileServicesCategory($data , $user_id , $profile_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_services_category SET fk_profile_id = ".$this->db->escape($profile_id).",fk_category_id = ".$this->db->escape($data['category_id']).",fk_category_name = ".$this->db->escape($this->getCategoryNameById($data['category_id'])).",fk_services_id = ".$this->db->escape($data['services_id']).",fk_services_names = ".$this->db->escape($this->getServiceNameById($data['services_id'])).",created_by = ".$this->db->escape($user_id).",created_date = NOW()";$this->db->query($sql_str);
+	}
+	public function setProfilePaymentDetails($data , $user_id , $profile_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_payment_info SET fk_profile_id = ".$this->db->escape($profile_id).",fk_payment_type_id = ".$this->db->escape($data['payment_type_name']).",fk_payment_type_name = ".$this->db->escape($this->getPaymentTypeName($data['payment_type_name']));$this->db->query($sql_str);
+		if ($this->db->trans_status()) { $this->db->trans_commit(); 
+			return json_encode(array('status' => TRUE , 'message'=>'Profile Created successfully..!!'));
+		} else { $this->db->trans_rollback();
+			return json_encode(array('status' => FALSE , 'message'=>'error plese insert data proparly'));
+		}
+	}
+	public function setProfileImage($image_name , $profile_id , $user_id)
+	{
+		$sql_str = "INSERT INTO spa_profile_images SET fk_profile_id = ".$this->db->escape($profile_id).",image_name = ".$this->db->escape($image_name).",created_date = NOW() , created_by = ".$this->db->escape($user_id);
 		return $this->db->query($sql_str);
 	}
 	private function getCountryNameById($country_id)
@@ -265,5 +283,20 @@ class Website extends CI_Model
 	{
 		$sql_str = "SELECT area_name FROM area WHERE id = ".$this->db->escape($area_id);
 		return $this->db->query($sql_str)->row()->area_name;
+	}
+	private function getServiceNameById($service_id)
+	{
+		$sql_str = "SELECT * FROM services WHERE id = ".$this->db->escape($service_id);
+		return $this->db->query($sql_str)->row()->services_name;
+	}
+	private function getCategoryNameById($category_id)
+	{
+		$sql_str = "SELECT * FROM category WHERE id = ".$this->db->escape($category_id);
+		return $this->db->query($sql_str)->row()->category_name;
+	}
+	private function getPaymentTypeName($payment_id)
+	{
+		$sql_str = "SELECT * FROM payment_info WHERE id = ".$this->db->escape($payment_id);
+		return $this->db->query($sql_str)->row()->payment_type_name;
 	}
 }

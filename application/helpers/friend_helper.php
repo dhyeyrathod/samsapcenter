@@ -18,4 +18,11 @@ class Friend
 	{
 		return json_decode(file_get_contents("http://ipinfo.io/"));	
 	}
+	public function profile_image_upload()
+	{
+		$config['upload_path'] = './admin/spa_image/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['encrypt_name'] = TRUE ;
+		return $config ;
+	}
 }
