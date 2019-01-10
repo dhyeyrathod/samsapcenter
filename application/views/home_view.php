@@ -118,7 +118,7 @@
                                                 <a  class="cuadroa" href="<?= base_url().str_replace(' ','-',$paid_profile_data->title)."/info/".$this->friend->base64url_encode($paid_profile_data->id) ?>">
                                                     <div class="cuadro_intro_hover ">
                                                         <p style="text-align:center;">
-                                                            <img src="<?= base_url('admin/spa_image') ?>/<?= $paid_profile_data->image ?>" class="img-responsive" alt="">
+                                                            <img src="<?= base_url('admin/spa_image') ?>/<?= $paid_profile_data->image ?>" onerror="imgError(this);" class="img-responsive" alt="">
                                                         </p>
                                                         <div class="caption">
                                                             <div class="blur"></div>
@@ -185,32 +185,12 @@
             </div>
         </main>
         <?php $this->load->view('common/js') ?>
-        <!-- <script type="text/javascript">
-            $('#query').keydown(function (e){
-                var query_str = $('#query').val();
-                var ajax_url = base_url + "home/search_query_ajax_url";
-                $.ajax({
-                    type: "POST",
-                    url: ajax_url,
-                    data: {query_str:query_str},
-                    success : function (respons) {
-                        var respons_array = jQuery.parseJSON(respons);
-                        if (respons_array.status == 'success') {
-                            var html_str = '';
-                            for(var i=0 ; i < respons_array.data.length ; i++)
-                            {
-                                html_str += '<li class="list-group-item">' + respons_array.data[i].category_name + '</li>';
-                            }
-                            $('#suggetion_div').html(html_str);
-                        } else {
-                            $('#suggetion_div').html('');
-                        }
-                    },
-                    error : function (respons) {
-                        
-                    }
-                });
-            });
-        </script> -->
+        <script type="text/javascript">
+           function imgError(image) {
+                image.onerror = "";
+                image.src = "http://samspacenter.com/assets/images/portrait-1.jpg";
+                return true;
+            }
+        </script>
     </body>
 </html>

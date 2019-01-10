@@ -16,7 +16,7 @@ class Members extends MY_Controller
 	}
 	public function new_profile()
 	{
-		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+		if ($this->input->server('REQUEST_METHOD') == 'POST' && $this->form_validation->run('spa_profile'))  {
 			$this->response = json_decode($this->website->setProfile($this->input->post(),$this->session->userdata('user_id')));
 			if ($this->response->status == "success") {
 				$this->website->setSpaProfileLocation($this->input->post(),$this->session->userdata('user_id'),$this->response->last_inserted_id);
@@ -32,17 +32,41 @@ class Members extends MY_Controller
 		                $this->load->library('upload', $this->friend->profile_image_upload());
 		                if ($this->upload->do_upload('file')) {
 		                	$this->website->setProfileImage($this->upload->data('file_name'),$this->response->last_inserted_id,$this->session->userdata('user_id'));
+		                } else {
+		                	$this->data['error'] = array('status' =>  FALSE,'message'=>'Error while upload image');
 		                }
-					}
+					} 
+				} else {
+					$this->data['error'] = array('status' => FALSE,'message'=>'Profile is not created');
 				}
-			};
-			exit();
+			}
+			$this->session->set_flashdata('success','Profile Create successfully..!!');
 		}
 		$this->data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
 		$this->data['category_key'] = $this->website->getRandomCategoryLimitedBySix(100);
 		$this->data['services_key'] = $this->website->getRandomServicesLimitedten(100);
 		$this->data['country_data'] = $this->website->getAllCountry();
 		$this->load->view('add_new_profile',$this->data);
+	}
+	
+	public function edit_profile()
+	{
+		$profile_id = $this->friend->base64url_decode($this->uri->segment(3));
+		$isupdate = TRUE ;
+		if ($this->input->server('REQUEST_METHOD') == 'POST' && $this->form_validation->run('spa_profile')) {
+			$this->response = json_decode($this->website->setProfile($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id')));
+			if ($this->response->status == "success") {
+				$this->website->setSpaProfileLocation($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id'));
+				$this->website->setSpaProfileServicesCategory($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id'));
+			}
+		}
+
+		$this->data['profile_data'] = $this->website->getSingleProfileDataById($profile_id);
+		$this->data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
+		$this->data['category_key'] = $this->website->getRandomCategoryLimitedBySix(100);
+		$this->data['services_key'] = $this->website->getRandomServicesLimitedten(100);
+		$this->data['country_data'] = $this->website->getAllCountry();
+		$this->load->view('edit_profile',$this->data);
 	}
 	public function get_city()
 	{

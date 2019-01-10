@@ -231,27 +231,42 @@ class Website extends CI_Model
 		$sql_str = "SELECT * FROM city WHERE fk_country_id = ".$this->db->escape($country_id);
 		return $this->db->query($sql_str)->result();
 	}
-	public function setProfile($data , $user_id)
+	public function setProfile($data , $user_id , $isupdate = false , $profile_id = false)
 	{
-		$this->db->trans_begin();	
-		$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",description = ".$this->db->escape($data['description']).",status = TRUE , fk_user_id = ".$this->db->escape($user_id).",created_date = NOW() , created_by = ".$this->db->escape($user_id);
-		if ($this->db->query($sql_str)) {
-			$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
+		if ($isupdate && $profile_id) {
+			$sql_str = "UPDATE spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",description = ".$this->db->escape($data['description']).",status = TRUE , fk_user_id = ".$this->db->escape($user_id).",updated_date = NOW() , updated_by = ".$this->db->escape($user_id)." WHERE id = ".$this->db->escape($profile_id);
+			if ($this->db->query($sql_str)) {
+				$respons = json_encode(array('status' => 'success'));
+			} else {
+				$respons = json_encode(array('status' => 'failure'));
+			}
+			return $respons ;
 		} else {
-			$respons = json_encode(array('status' => 'failure'));
+			$this->db->trans_begin();
+			$sql_str = "INSERT INTO spa_profile SET title = ".$this->db->escape($data['title']).",contact_number = ".$this->db->escape($data['contact_number']).",email_id = ".$this->db->escape($data['email_id']).",description = ".$this->db->escape($data['description']).",status = TRUE , fk_user_id = ".$this->db->escape($user_id).",created_date = NOW() , created_by = ".$this->db->escape($user_id);
+			if ($this->db->query($sql_str)) {
+				$respons = json_encode(array('status' => 'success','last_inserted_id'=>$this->db->insert_id()));
+			} else {
+				$respons = json_encode(array('status' => 'failure'));
+			}
+			return $respons ;	
 		}
-		return $respons ;
 	}
 	public function getAllAreasByCityId($city_id)
 	{
 		$sql_str = "SELECT * FROM area WHERE fk_city_id = ".$this->db->escape($city_id);
 		return $this->db->query($sql_str)->result();
 	}
-	public function setSpaProfileLocation($data , $user_id , $profile_id)
-	{
-		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($profile_id).",fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	created_by = ".$this->db->escape($user_id).",created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode']);$this->db->query($sql_str);
+	public function setSpaProfileLocation($data,$user_id,$isupdate=false,$profile_id=false) {
+		if ($isupdate && $profile_id) {
+			$sql_str = "UPDATE spa_profile_location SET fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	updated_by = ".$this->db->escape($user_id).",updated_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode'])." WHERE fk_profile_id = ".$this->db->escape($profile_id);
+			$this->db->query($sql_str);
+		} else {
+			$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($profile_id).",fk_counry_id = ".$this->db->escape($data['country_id']).",fk_city_id = ".$this->db->escape($data['city_id']).",fk_area_id = ".$this->db->escape($data['area_id']).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",	created_by = ".$this->db->escape($user_id).",created_date = NOW() , country_name = ".$this->db->escape($this->getCountryNameById($data['country_id'])).",city_name = ".$this->db->escape($this->getCityNameById($data['city_id'])).",area_name = ".$this->db->escape($this->getAreaNameById($data['area_id'])).",pincode = ".$this->db->escape($data['pincode']);
+			$this->db->query($sql_str);	
+		}
 	}
-	public function setSpaProfileServicesCategory($data , $user_id , $profile_id)
+	public function setSpaProfileServicesCategory($data,$user_id,$profile_id=false,$isupdate=false)
 	{
 		$sql_str = "INSERT INTO spa_profile_services_category SET fk_profile_id = ".$this->db->escape($profile_id).",fk_category_id = ".$this->db->escape($data['category_id']).",fk_category_name = ".$this->db->escape($this->getCategoryNameById($data['category_id'])).",fk_services_id = ".$this->db->escape($data['services_id']).",fk_services_names = ".$this->db->escape($this->getServiceNameById($data['services_id'])).",created_by = ".$this->db->escape($user_id).",created_date = NOW()";$this->db->query($sql_str);
 	}

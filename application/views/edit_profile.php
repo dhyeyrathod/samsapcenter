@@ -31,33 +31,33 @@
                                 <strong>Success!</strong> <?= $this->session->flashdata('success') ?>.
                             </div>
                         <?php endif ; ?>
-                        <?= form_open_multipart('members/new_profile') ?>
+                        <?= form_open_multipart('members/edit_profile') ?>
                         <div class="row">
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Title <span class="required">*</span></label>
-                                    <input placeholder="" value="<?= set_value('title') ?>" name="title" class="form-control" type="text">
+                                    <input placeholder="" value="<?= $profile_data->title ?>" name="title" class="form-control" type="text">
                                     <?= form_error('title', '<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Contact No<span class="required">*</span></label>
-                                    <input placeholder="" value="<?= set_value('contact_number') ?>" name="contact_number" class="form-control" type="text">
+                                    <input placeholder="" value="<?= $profile_data->contact_number ?>" name="contact_number" class="form-control" type="text">
                                     <?= form_error('contact_number','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Email <span class="required">*</span></label>
-                                    <input placeholder="" name="email_id" value="<?= set_value('email_id') ?>" class="form-control" type="email">
+                                    <input placeholder="" name="email_id" value="<?= $profile_data->email_id ?>" class="form-control" type="email">
                                     <?= form_error('email_id','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Description <span class="required">*</span></label>
-                                    <textarea placeholder="" name="description" class="form-control"  type="text"><?= set_value('description') ?></textarea>
+                                    <textarea placeholder="" name="description" class="form-control"  type="text"><?= $profile_data->description ?></textarea>
                                     <?= form_error('description','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
@@ -94,21 +94,21 @@
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Address </label>
-                                    <textarea placeholder="" name="address" class="form-control" ><?= set_value('address') ?></textarea>
+                                    <textarea placeholder="" name="address" class="form-control" > <?= $profile_data->address ?> </textarea>
                                     <?= form_error('address','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Pincode </label>
-                                    <input type="text" placeholder="" value="<?= set_value('pincode') ?>" name="pincode" class="form-control" >
+                                    <input type="text" placeholder="" value="<?= $profile_data->pincode ?>" name="pincode" class="form-control" >
                                     <?= form_error('pincode','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Google Map Url </label>
-                                    <input type="text" placeholder="" value="<?= set_value('google_map_url') ?>" name="google_map_url" class="form-control" >
+                                    <input type="text" placeholder="" value="<?= $profile_data->google_map_url ?>" name="google_map_url" class="form-control" >
                                     <?= form_error('google_map_url','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
@@ -126,7 +126,7 @@
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Category </label>
-                                    <select class="select-general form-control select2-hidden-accessible" tabindex="-1" name="category_id" value="<?= set_value('category_id') ?>" aria-hidden="true">
+                                    <select class="select-general form-control select2-hidden-accessible" tabindex="-1" name="category_id" id="category_id" value="<?= set_value('category_id') ?>" aria-hidden="true">
                                         <option>--Select Category--</option>
                                         <?php foreach ($category_key as $category_data) : ?>
                                             <option value="<?= $category_data->id ?>"><?= $category_data->category_name ?></option>
@@ -138,7 +138,7 @@
                               <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Services </label>
-                                    <select class="select-general form-control select2-hidden-accessible" tabindex="-1" name="services_id" value="<?= set_value('services_id') ?>" aria-hidden="true">
+                                    <select class="select-general form-control select2-hidden-accessible" tabindex="-1" name="services_id" id="services_id" value="<?= set_value('services_id') ?>" aria-hidden="true">
                                         <option>--Select Service--</option>
                                         <?php foreach ($services_key as $key => $services_data) : ?>
                                             <option value="<?= $services_data->id ?>"><?= $services_data->services_name ?></option>
@@ -159,11 +159,12 @@
                                  </div>
                               </div>
 
+                              <input type="hidden" value="<?= $profile_data->id ?>" name="profile_id">
+
                               <div class="col-md-12 col-sm-12">
                                  <button class="btn btn-default pull-right"><i class="fa fa-save"></i> Save Profile </button>
                               </div>
-                         
-                        </div>
+                            </div>
                           <?= form_close() ?>
                      </div>
                   </div>
@@ -173,11 +174,26 @@
             <?php $this->load->view('common/footer') ?>
         </div>
     </main>
-    <script type="text/javascript">
-        var base_url = '<?= base_url() ?>';
-    </script>
     <?php $this->load->view('common/js') ?>
     <script type="text/javascript">
+        $(document).ready(function(){
+            var category_id = '<?= $profile_data->category_id ?>'; 
+            $("#category_id").val(category_id).change();
+
+            var services_id = '<?= $profile_data->services_id ?>'; 
+            $("#services_id").val(services_id).change();
+
+            var country_id = '<?= $profile_data->counry_id ?>';
+            $("#select_country").val(country_id).change();
+            setTimeout(function(){ 
+                var city_id = '<?= $profile_data->city_id ?>';
+                $("#city_drop_select").val(city_id).change();       
+            },3000);
+            setTimeout(function(){ 
+                var area_id = '<?= $profile_data->area_id ?>';
+                $("#area_select").val(area_id).change();       
+            },5000);  
+        });
         $("#select_country").change(function(){
             var country_id = $("#select_country").val();
             var ajax_url = base_url + "members/get_city";

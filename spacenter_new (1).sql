@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2018 at 07:19 PM
+-- Generation Time: Jan 10, 2019 at 08:32 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -145,7 +145,56 @@ INSERT INTO `city` (`id`, `city_name`, `fk_country_id`, `created_date`, `updated
 (4, 'Panjab', 1, '2018-09-10 01:16:25', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
 (5, 'Haiyana', 1, '2018-09-10 01:16:26', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
 (7, 'Rajastan', 1, '2018-09-10 01:16:26', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
-(8, 'Karachi', 3, '2018-09-10 01:16:26', '0000-00-00 00:00:00', '', '', '', 1, 'Pakistan');
+(8, 'Karachi', 3, '2018-09-10 01:16:26', '0000-00-00 00:00:00', '', '', '', 1, 'Pakistan'),
+(9, 'Pune', 1, '2018-12-19 19:14:33', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(10, 'Chennai', 1, '2018-12-19 19:14:51', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(11, 'Kolkata', 1, '2018-12-19 19:15:06', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(12, 'Hyderabad', 1, '2018-12-19 19:15:13', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(13, 'Ahmedabad', 1, '2018-12-19 19:15:21', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(14, 'New Delhi', 1, '2018-12-19 19:15:49', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(15, 'Jaipur', 1, '2018-12-19 19:15:59', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(16, 'Chandigarh', 1, '2018-12-19 19:16:08', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(17, 'Lucknow', 1, '2018-12-19 19:16:17', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(18, 'Bhopal', 1, '2018-12-19 19:16:26', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(19, 'Surat', 1, '2018-12-19 19:16:37', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(20, 'Kochi', 1, '2018-12-19 19:16:47', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(21, 'Patna', 1, '2018-12-19 19:16:55', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(22, 'Gurugram', 1, '2018-12-19 19:17:02', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(23, 'Kanpur', 1, '2018-12-19 19:17:10', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(24, 'Agra', 1, '2018-12-19 19:17:19', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(25, 'Varanasi', 1, '2018-12-19 19:17:28', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(26, 'Allahabad', 1, '2018-12-19 19:17:36', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(27, 'Indore', 1, '2018-12-19 19:17:43', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(28, 'Visakhapatnam', 1, '2018-12-19 19:17:51', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(29, 'Thiruvananthapuram', 1, '2018-12-19 19:18:00', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(30, 'Nagpur', 1, '2018-12-19 19:18:12', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(31, 'Bhubaneswar', 1, '2018-12-19 19:18:23', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(32, 'Coimbatore', 1, '2018-12-19 19:18:41', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(33, 'Guwahati', 1, '2018-12-19 19:18:48', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(34, 'Aurangabad', 1, '2018-12-19 19:18:58', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(35, 'Ludhiana', 1, '2018-12-19 19:19:09', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(36, 'Ranchi', 1, '2018-12-19 19:19:19', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(37, 'Raipur', 1, '2018-12-19 19:19:28', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(38, 'Vadodara', 1, '2018-12-19 19:19:36', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(39, 'Mangalore', 1, '2018-12-19 19:19:44', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(40, 'Mysore', 1, '2018-12-19 19:19:54', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(41, 'Vijayawada', 1, '2018-12-19 19:20:02', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(42, 'Madurai', 1, '2018-12-19 19:20:12', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(43, 'Amritsar', 1, '2018-12-19 19:20:23', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(44, 'Udaipur', 1, '2018-12-19 19:20:30', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(45, 'Srinagar', 1, '2018-12-19 19:20:52', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(46, 'Noida', 1, '2018-12-19 19:21:01', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(47, 'Jamshedpur', 1, '2018-12-19 19:21:12', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(48, 'Dehradun', 1, '2018-12-19 19:21:21', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(49, 'Faridabad', 1, '2018-12-19 19:21:46', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(50, 'Nashik', 1, '2018-12-19 19:22:01', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(51, 'Jodhpur', 1, '2018-12-19 19:22:15', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(52, 'Ghaziabad', 1, '2018-12-19 19:36:00', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(53, 'Rajkot', 1, '2018-12-19 19:36:11', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(54, 'Shimla', 1, '2018-12-19 19:36:21', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(55, 'Meerut', 1, '2018-12-19 19:36:29', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(56, 'Pondicherry', 1, '2018-12-19 19:36:37', '0000-00-00 00:00:00', '', '', '', 1, 'India'),
+(57, 'Cuttack', 1, '2018-12-19 19:36:45', '0000-00-00 00:00:00', '', '', '', 1, 'India');
 
 -- --------------------------------------------------------
 
@@ -169,8 +218,7 @@ CREATE TABLE `country` (
 
 INSERT INTO `country` (`id`, `country_name`, `meta_title`, `meta_desscription`, `meta_keyword`, `created_date`, `updated_date`) VALUES
 (1, 'India', '', '', '', '2018-09-10 01:16:25', '0000-00-00 00:00:00'),
-(3, 'Pakistan', '', '', '', '2018-09-10 01:16:26', '0000-00-00 00:00:00'),
-(4, ' India', '', '', '', '2018-09-10 02:39:04', '0000-00-00 00:00:00');
+(3, 'Pakistan', '', '', '', '2018-09-10 01:16:26', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -292,21 +340,10 @@ CREATE TABLE `spa_profile` (
 --
 
 INSERT INTO `spa_profile` (`id`, `title`, `contact_number`, `description`, `ranking`, `status`, `email_id`, `fk_user_id`, `created_date`, `created_by`, `updated_date`, `updated_by`) VALUES
-(1, 'Viva Look Lady Salon ', '9152394371', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(2, 'Looks Exotica Luxury Unisex Salon ', '9152563246', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(3, 'Bbeauters Beauty & Wellness Clinic  ', '9152619527', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(4, 'Skin Alive Make Up Studio ', '9152716588', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(5, 'Venus Hair & Beauty Salon  ', '9152563274', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(6, 'Nature Beauty Clinic  ', '9152480898', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(7, 'Beyond Looks ', '9152610730', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(8, 'The Barbering Salon  ', '9152758128', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(9, 'Beauty N Beyond  ', '9152418980', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(10, 'Grace Beauty Parlour ', '9152382442', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 0),
-(11, 'I Diva Beauty Salon ', '9152268781', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 0),
-(12, 'Galaxy Unisex Salon  ', '9152518088', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 0),
-(13, 'Naturals Unisex Salon & Spa  ', '9152478506', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 0),
-(14, 'Shades The Beauty Studio ', '9152481336', 'On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish', 4, 1, 'test@gmail.com', 1000, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 0),
-(15, 'test profile', '9999999999', '<p><strong>Body Massage in Chakkarpur, Delhi</strong></p>\r\n\r\n<p>Rose Body Massage in Delhi. Massage Services For Men At Home with Address, Contact Number, Photos, Maps. View Rose Body Massage, Delhi on Justdial.</p>\r\n\r\n<p><strong>Location and Overview:</strong></p>\r\n\r\n<p>Established in the year 2013, Rose Body Massage in Chakkarpur, Delhi is a top player in the category Massage Services For Men At Home in the Delhi. This well-known establishment acts as a one-stop destination servicing customers both local and from other parts of Delhi. Over the course of its journey, this business has established a firm foothold in it&rsquo;s industry. The belief that customer satisfaction is as important as their products and services, have helped this establishment garner a vast base of customers, which continues to grow by the day. This business employs individuals that are dedicated towards their respective roles and put in a lot of effort to achieve the common vision and larger goals of the company. In the near future, this business aims to expand its line of products and services and cater to a larger client base. In Delhi, this establishment occupies a prominent location in Chakkarpur. It is an effortless task in commuting to this establishment as there are various modes of transport readily available. It is at 0, Near Galleria Market, which makes it easy for first-time visitors in locating this establishment. The popularity of this business is evident from the 90+ reviews it has received from Justdial users. It is known to provide top service in the following categories: Massage Services For Men At Home, Body Massage Centres, 24 Hours Body Massage Centres.</p>\r\n\r\n<p><strong>Products and Services offered:</strong></p>\r\n\r\n<p>Rose Body Massage in Chakkarpur has a wide range of products and services to cater to the varied requirements of their customers. The staff at this establishment are courteous and prompt at providing any assistance. They readily answer any queries or questions that you may have. Pay for the product or service with ease by using any of the available modes of payment, such as Cash, Master Card, Visa Card, Debit Cards, Cheques, American Express Card, Credit Card. This establishment is functional from 00:00 - 23:59.</p>\r\n\r\n<p>Please scroll to the top for the address and contact details of Rose Body Massage at Chakkarpur, Delhi.</p>\r\n', 0, 1, 'cellmedservices1@gmail.com', 0, '2018-09-26 20:14:01', 0, '0000-00-00 00:00:00', 0);
+(1, 'Hygienic Thai Spa', '9967313968', 'Hello World', 0, 1, 'Hygienic@gmail.com', 2, '2019-01-06 15:19:14', 2, '2019-01-09 20:14:24', 2),
+(2, 'Title ', '9967313968', 'dasd asd as das dasd asd', 0, 1, 'Hygienic@gmail.com', 2, '2019-01-06 15:28:47', 2, '0000-00-00 00:00:00', 0),
+(3, 'Title ', '9967313968', 'dasd asd as das dasd asd', 0, 1, 'Hygienic@gmail.com', 2, '2019-01-06 15:29:44', 2, '0000-00-00 00:00:00', 0),
+(4, 'Title ', '9967313968', 'dasd asd as das dasd asd', 0, 1, 'Hygienic@gmail.com', 2, '2019-01-06 15:30:07', 2, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -329,11 +366,10 @@ CREATE TABLE `spa_profile_images` (
 --
 
 INSERT INTO `spa_profile_images` (`id`, `fk_profile_id`, `image_name`, `created_date`, `updated_date`, `created_by`, `updated_by`) VALUES
-(1, 15, '126a7808a60d2693b3ba152e5cf21f78.jpg', '2018-09-26 20:14:01', '0000-00-00 00:00:00', 0, 0),
-(2, 15, '42b0fbb3c37cb82d635fd4357c0f53e2.jpg', '2018-09-26 20:14:01', '0000-00-00 00:00:00', 0, 0),
-(3, 15, 'e65482b98226b586d509f31e8c364153.jpg', '2018-09-26 20:14:01', '0000-00-00 00:00:00', 0, 0),
-(4, 15, '98c9df4e5238a7a9b93685bcc0b4eb06.jpg', '2018-09-26 20:14:01', '0000-00-00 00:00:00', 0, 0),
-(5, 15, 'a9f2d2119222bc184be590d70bffdf92.jpg', '2018-09-26 20:14:01', '0000-00-00 00:00:00', 0, 0);
+(1, 1, '367562dfccfb4bde2c66f85d4a46da28.jpg', '2019-01-06 15:19:15', '0000-00-00 00:00:00', 2, 0),
+(2, 2, '8e321654db7ecdf7f964de2486ba417b.jpg', '2019-01-06 15:28:47', '0000-00-00 00:00:00', 2, 0),
+(3, 3, 'b47a5b145d8934493a66eb5085620c2b.jpg', '2019-01-06 15:29:44', '0000-00-00 00:00:00', 2, 0),
+(4, 4, '4ff8bff7365427533e581a8466921bd3.jpg', '2019-01-06 15:30:08', '0000-00-00 00:00:00', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -344,18 +380,18 @@ INSERT INTO `spa_profile_images` (`id`, `fk_profile_id`, `image_name`, `created_
 CREATE TABLE `spa_profile_location` (
   `id` int(11) NOT NULL,
   `fk_profile_id` int(11) NOT NULL,
+  `country_name` varchar(255) NOT NULL,
   `fk_counry_id` int(11) NOT NULL,
   `fk_city_id` int(11) NOT NULL,
+  `city_name` varchar(255) NOT NULL,
   `fk_area_id` int(11) NOT NULL,
-  `address` varchar(255) NOT NULL,
+  `area_name` varchar(255) NOT NULL,
+  `address` text NOT NULL,
   `google_map_url` varchar(255) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
   `updated_date` datetime NOT NULL,
-  `country_name` varchar(255) NOT NULL,
-  `city_name` varchar(255) NOT NULL,
-  `area_name` varchar(255) NOT NULL,
   `pincode` int(11) NOT NULL,
   `excel_code` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -364,22 +400,11 @@ CREATE TABLE `spa_profile_location` (
 -- Dumping data for table `spa_profile_location`
 --
 
-INSERT INTO `spa_profile_location` (`id`, `fk_profile_id`, `fk_counry_id`, `fk_city_id`, `fk_area_id`, `address`, `google_map_url`, `created_by`, `created_date`, `updated_by`, `updated_date`, `country_name`, `city_name`, `area_name`, `pincode`, `excel_code`) VALUES
-(1, 1, 1, 3, 11, 'D- 486 Palam Extension, Dwarka Sector 7, Delhi - 110075, Near HP Gas Agency', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(2, 2, 1, 3, 11, 'C-65, First Floor, Prashant Vihar, Delhi - 110085, Opposite Sports Complex Rohini', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(3, 3, 1, 3, 11, 'Shop No-53, Harsh Vihar, 1st Floor, Pitampura, Delhi - 110034, Opposite J & K Bank', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(4, 4, 1, 3, 11, 'C-1/169, B-1/19, Yamuna Vihar, Delhi - 110053, Near Hira Lal Sweets', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(5, 5, 1, 3, 11, 'J-4/21-B, Khirki Extension, Malviya Nagar, Delhi - 110017, Near Krishna Mandir', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(6, 6, 1, 3, 11, 'H -2/1, main road, Main road, Vikaspuri, Delhi - 110018, Near lal market ', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(7, 7, 1, 3, 11, 'B-1/64, CENTRAL MARKET, Sector 50, Noida - 201307, NEAR YES BANK', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(8, 8, 1, 3, 11, '203a, 0, Vikaspuri, Delhi - 110018, Opposite HDFC Bank, Behind PVR Cinemas', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(9, 9, 1, 3, 11, 'G-17 Fun City Mall, PVR Complex, Prashant Vihar, Prashant Vihar, Delhi - 110085, PVR Cinemas ', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(10, 10, 1, 3, 11, '168 A, Pocket C, Mayur Vihar Phase 2, Delhi - 110091, Near Neelam Mata Mandir ', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(11, 11, 1, 3, 11, 'U-16/55, DLF City Phase 3, Gurgaon - 122010, Opp Chowrangee Restaurant ', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(12, 12, 1, 3, 11, 'A -26, Love India Homes, Shalimar Garden Extention 1, Sahibabad - 201005, Near Sm World Mall', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(13, 13, 1, 3, 11, '2530, Ground Floor, Hudson Line, Kingsway Camp, Kingsway Camp, Delhi - 110009, Near Axis Bank', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(14, 14, 1, 3, 11, 'Shop No 119 to 122 First Floor, The Sapphire, Gurgaon Sector 49, Gurgaon - 122018', 'https://goo.gl/maps/vnnomxawLVt', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 'India', 'Delhi', 'Dwarka', 400092, '159535'),
-(15, 15, 1, 1, 3, 'test address', 'https://goo.gl/maps/oAHGvYoJLzD2', 0, '2018-09-26 20:14:01', 0, '0000-00-00 00:00:00', 'India', 'Mumbai', 'Malad', 400092, '');
+INSERT INTO `spa_profile_location` (`id`, `fk_profile_id`, `country_name`, `fk_counry_id`, `fk_city_id`, `city_name`, `fk_area_id`, `area_name`, `address`, `google_map_url`, `created_by`, `created_date`, `updated_by`, `updated_date`, `pincode`, `excel_code`) VALUES
+(1, 1, 'India', 1, 1, 'Mumbai', 1, 'Borivali', 'Hello Address', 'https://goo.gl/maps/GjfnHXBhcc92', 2, '2019-01-06 15:19:14', 0, '0000-00-00 00:00:00', 400092, ''),
+(2, 2, 'India', 1, 1, 'Mumbai', 5, 'Virar', 'asdsa s as dasdasdasd', 'https://goo.gl/maps/GjfnHXBhcc92', 2, '2019-01-06 15:28:47', 0, '0000-00-00 00:00:00', 400092, ''),
+(3, 3, 'India', 1, 1, 'Mumbai', 5, 'Virar', 'asdsa s as dasdasdasd', 'https://goo.gl/maps/GjfnHXBhcc92', 2, '2019-01-06 15:29:44', 0, '0000-00-00 00:00:00', 400092, ''),
+(4, 4, 'India', 1, 1, 'Mumbai', 5, 'Virar', 'asdsa s as dasdasdasd', 'https://goo.gl/maps/GjfnHXBhcc92', 2, '2019-01-06 15:30:07', 0, '0000-00-00 00:00:00', 400092, '');
 
 -- --------------------------------------------------------
 
@@ -400,21 +425,10 @@ CREATE TABLE `spa_profile_payment_info` (
 --
 
 INSERT INTO `spa_profile_payment_info` (`id`, `fk_profile_id`, `fk_payment_type_id`, `fk_payment_type_name`, `excel_code`) VALUES
-(1, 1, 2, 'Free', '159535'),
-(2, 2, 1, 'Paid', '159535'),
-(3, 3, 2, 'Free', '159535'),
-(4, 4, 2, 'Free', '159535'),
-(5, 5, 1, 'Paid', '159535'),
-(6, 6, 2, 'Free', '159535'),
-(7, 7, 2, 'Free', '159535'),
-(8, 8, 2, 'Free', '159535'),
-(9, 9, 1, 'Paid', '159535'),
-(10, 10, 2, 'Free', '159535'),
-(11, 11, 2, 'Free', '159535'),
-(12, 12, 1, 'Paid', '159535'),
-(13, 13, 2, 'Free', '159535'),
-(14, 14, 2, 'Free', '159535'),
-(15, 15, 1, 'Paid', '');
+(1, 1, 1, 'Paid', ''),
+(2, 2, 2, 'Free', ''),
+(3, 3, 2, 'Free', ''),
+(4, 4, 2, 'Free', '');
 
 -- --------------------------------------------------------
 
@@ -424,15 +438,15 @@ INSERT INTO `spa_profile_payment_info` (`id`, `fk_profile_id`, `fk_payment_type_
 
 CREATE TABLE `spa_profile_services_category` (
   `id` int(11) NOT NULL,
+  `fk_profile_id` int(11) NOT NULL,
   `fk_category_id` int(11) NOT NULL,
-  `fk_services_names` varchar(255) NOT NULL,
-  `fk_services_id` varchar(255) NOT NULL,
   `fk_category_name` varchar(255) NOT NULL,
+  `fk_services_id` varchar(255) NOT NULL,
+  `fk_services_names` varchar(255) NOT NULL,
   `created_by` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   `updated_by` int(11) NOT NULL,
   `updated_date` datetime NOT NULL,
-  `fk_profile_id` int(11) NOT NULL,
   `excel_code` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -440,22 +454,11 @@ CREATE TABLE `spa_profile_services_category` (
 -- Dumping data for table `spa_profile_services_category`
 --
 
-INSERT INTO `spa_profile_services_category` (`id`, `fk_category_id`, `fk_services_names`, `fk_services_id`, `fk_category_name`, `created_by`, `created_date`, `updated_by`, `updated_date`, `fk_profile_id`, `excel_code`) VALUES
-(1, 7, 'Body Massage Centres', '1', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 1, '159535'),
-(2, 7, 'Beauty Spas', '2', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 2, '159535'),
-(3, 7, 'Massage', '4', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 3, '159535'),
-(4, 7, 'Massage', '4', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 4, '159535'),
-(5, 7, 'Massage', '4', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 5, '159535'),
-(6, 7, 'Massage', '4', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 6, '159535'),
-(7, 7, 'Makeup Artist', '6', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 7, '159535'),
-(8, 7, 'Makeup Artist', '6', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 8, '159535'),
-(9, 7, 'Makeup Artist', '6', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 9, '159535'),
-(10, 7, 'Makeup Artist', '6', 'Spa', 0, '2018-09-25 19:26:14', 0, '0000-00-00 00:00:00', 10, '159535'),
-(11, 7, 'Men Salons', '5', 'Spa', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 11, '159535'),
-(12, 7, 'Men Salons', '5', 'Spa', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 12, '159535'),
-(13, 7, 'Men Salons', '5', 'Spa', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 13, '159535'),
-(14, 7, 'Men Salons', '5', 'Spa', 0, '2018-09-25 19:26:15', 0, '0000-00-00 00:00:00', 14, '159535'),
-(15, 3, 'Men Salons', '5', 'Bridal Makeup', 0, '2018-09-26 20:14:01', 0, '0000-00-00 00:00:00', 15, '');
+INSERT INTO `spa_profile_services_category` (`id`, `fk_profile_id`, `fk_category_id`, `fk_category_name`, `fk_services_id`, `fk_services_names`, `created_by`, `created_date`, `updated_by`, `updated_date`, `excel_code`) VALUES
+(1, 1, 1, 'Beauty Parlours', '2', 'Beauty Spas', 2, '2019-01-06 15:19:14', 0, '0000-00-00 00:00:00', ''),
+(2, 2, 2, 'Beauty Services', '1', 'Body Massage Centres', 2, '2019-01-06 15:28:47', 0, '0000-00-00 00:00:00', ''),
+(3, 3, 2, 'Beauty Services', '1', 'Body Massage Centres', 2, '2019-01-06 15:29:44', 0, '0000-00-00 00:00:00', ''),
+(4, 4, 2, 'Beauty Services', '1', 'Body Massage Centres', 2, '2019-01-06 15:30:07', 0, '0000-00-00 00:00:00', '');
 
 --
 -- Indexes for dumped tables
@@ -568,12 +571,12 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `city`
 --
 ALTER TABLE `city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT for table `country`
 --
 ALTER TABLE `country`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `members`
 --
@@ -598,27 +601,27 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `spa_profile`
 --
 ALTER TABLE `spa_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `spa_profile_images`
 --
 ALTER TABLE `spa_profile_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `spa_profile_location`
 --
 ALTER TABLE `spa_profile_location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `spa_profile_payment_info`
 --
 ALTER TABLE `spa_profile_payment_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `spa_profile_services_category`
 --
 ALTER TABLE `spa_profile_services_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
