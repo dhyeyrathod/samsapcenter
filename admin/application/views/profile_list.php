@@ -44,7 +44,7 @@
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $spa_list_data->title ?></td>
                                             <td><?= $spa_list_data->created_date ?></td>
-                                            <td><button class="btn btn-primary"> Edit </button></td>
+                                            <td><a href="<?= base_url('spa_profile/edit_profile') ?>/<?= $spa_list_data->id ?>"><button class="btn btn-primary"> Edit </button></a></td>
                                             <td><button class="btn btn-danger"> Delete </button></td>
                                         </tr>    
                                     <?php endforeach ; ?>

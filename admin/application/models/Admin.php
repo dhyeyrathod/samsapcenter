@@ -314,4 +314,14 @@ class Admin extends CI_Model
 		$sql_str = "SELECT id , title , created_date FROM spa_profile";
 		return $this->db->query($sql_str)->result();
 	}
+	public function getProfileInfoByID($profile_id)
+	{
+		$sql_str = "SELECT * FROM spa_profile WHERE id = ".$this->db->escape($profile_id);
+		return $this->db->query($sql_str)->row();
+	}
+	public function getProfileImageByID($profile_id)
+	{
+		$sql_str = "SELECT * FROM spa_profile_images WHERE fk_profile_id = ".$this->db->escape($profile_id);
+		return $this->db->query($sql_str)->result();
+	}
 }
