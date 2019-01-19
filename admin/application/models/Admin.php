@@ -271,7 +271,7 @@ class Admin extends CI_Model
 	}
 	public function setExcelSpaProfileLocation($data , $excel_code , $last_inserted_id)
 	{
-		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($last_inserted_id).",fk_counry_id = ".$this->db->escape($this->getCountryidByName($data['country_name'])->id).",fk_city_id = ".$this->db->escape($this->getCityIdByCityName($data['city_name'])->id).",fk_area_id = ".$this->db->escape($this->getAreaIdByName($data['area_name'])->id).",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",created_by = 0 , created_date = NOW() ,country_name = ".$this->db->escape($data['country_name']).", city_name = ".$this->db->escape($data['city_name']).",area_name = ".$this->db->escape($data['area_name']).",pincode = ".$this->db->escape($data['pincode']).", excel_code = ".$this->db->escape($excel_code);
+		$sql_str = "INSERT INTO spa_profile_location SET fk_profile_id = ".$this->db->escape($last_inserted_id).",fk_counry_id = ".$this->db->escape($this->getCountryidByName($data['country_name'])->id).",fk_city_id = ".$this->db->escape($this->getCityIdByCityName($data['city_name'])->id);if ($data['area_name']) : $sql_str .= ",fk_area_id = ".$this->db->escape($this->getAreaIdByName($data['area_name'])->id ? $this->getAreaIdByName($data['area_name'])->id : "Not Available").",area_name = ".$this->db->escape($data['area_name']); endif ; $sql_str .= ",address = ".$this->db->escape($data['address']).",google_map_url = ".$this->db->escape($data['google_map_url']).",created_by = 0 , created_date = NOW() ,country_name = ".$this->db->escape($data['country_name']).", city_name = ".$this->db->escape($data['city_name']).",pincode = ".$this->db->escape($data['pincode']).",excel_code = ".$this->db->escape($excel_code);
 		return $this->db->query($sql_str);
 	}
 	public function getAreaIdByName($area_name)
@@ -308,5 +308,10 @@ class Admin extends CI_Model
 	{
 		$sql_str = "SELECT * FROM services WHERE services_name = ".$this->db->escape($services_name);
 		return $this->db->query($sql_str)->row();
+	}
+	public function getAllSpalist()
+	{
+		$sql_str = "SELECT id , title , created_date FROM spa_profile";
+		return $this->db->query($sql_str)->result();
 	}
 }

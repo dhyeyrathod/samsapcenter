@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="font-1 pt-2 pl-0 pb-0 pr-0">
+                <!-- <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <h1 class="gglsrc lng_commn">Beauty Spas in Delhi-NCR   </h1>
                         <div class="row">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <div class="row">
@@ -123,7 +123,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 color-1">
-                                                    <a href="booking.html" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
+                                                    <a href="<?= base_url().str_replace(' ','-',$get_category_profile_data->title)."/info/".$this->friend->base64url_encode($get_category_profile_data->id) ?>" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
                                                     <span class="fa fa-arrow-circle-right color-warning"></span> Book Online</a>
                                                 </div>
                                                 <div class="rating"> <a href="book-details.html"><span class="fa fa-star mr-1 color-warning"></span> Click here to view your <b>friends rating</b></a></div>
@@ -135,6 +135,7 @@
                         </div>
                     </div>
                 </section>
+                <h4 class="text-center"></h4>
                 <?php $this->load->view('common/footer') ?>
         </main>
         <?php $this->load->view('common/js') ?>

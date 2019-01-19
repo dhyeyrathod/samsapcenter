@@ -12,7 +12,11 @@ class Members extends MY_Controller
 	}
 	public function dashboard()
 	{
-		$this->load->view('dashboard_view');
+		$this->data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
+		$this->data['category_key'] = $this->website->getRandomCategoryLimitedBySix(100);
+		$this->data['services_key'] = $this->website->getRandomServicesLimitedten(100);
+		$this->data['country_data'] = $this->website->getAllCountry();
+		$this->load->view('dashboard_view',$this->data);
 	}
 	public function new_profile()
 	{
@@ -53,14 +57,14 @@ class Members extends MY_Controller
 	{
 		$profile_id = $this->friend->base64url_decode($this->uri->segment(3));
 		$isupdate = TRUE ;
-		if ($this->input->server('REQUEST_METHOD') == 'POST' && $this->form_validation->run('spa_profile')) {
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			$this->response = json_decode($this->website->setProfile($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id')));
 			if ($this->response->status == "success") {
 				$this->website->setSpaProfileLocation($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id'));
 				$this->website->setSpaProfileServicesCategory($this->input->post(),$this->session->userdata('user_id'),$isupdate,$this->input->post('profile_id'));
+				redirect(base_url('members/edit_profile/').$this->friend->base64url_encode($this->input->post('profile_id')));
 			}
 		}
-
 		$this->data['profile_data'] = $this->website->getSingleProfileDataById($profile_id);
 		$this->data['all_cities_key'] = $this->website->getAllCitiesDataByCountryName($this->session->userdata('current_locaation_country'));
 		$this->data['category_key'] = $this->website->getRandomCategoryLimitedBySix(100);

@@ -72,7 +72,7 @@
                 </section>
                 <?php $this->load->view('common/footer') ?>
                 <div class="rightfixed">
-                    <a href="free-listing.html" class="frilst "></a>
+                    <a href="<?= base_url('members/dashboard') ?>" class="frilst "></a>
                     <a  href="customer-care.html" class="cscare "></a>
                 </div>
             </div>

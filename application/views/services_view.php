@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="font-1 pt-2 pl-0 pb-0 pr-0">
+                <!-- <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <h1 class="gglsrc lng_commn">Spas in Delhi-NCR	</h1>
                         <div class="row">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <div class="row">
@@ -127,7 +127,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-sm-3 color-1">
-                                                <a href="booking.html" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
+                                                <a href="<?= base_url().str_replace(' ','-',$get_services_profile_data->title)."/info/".$this->friend->base64url_encode($get_services_profile_data->id) ?>" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
                                                 <span class="fa fa-arrow-circle-right color-warning"></span> Book Online</a>
                                             </div>
                                             <div class="rating"> <a href="book-details.html"><span class="fa fa-star mr-1 color-warning"></span> Click here to view your <b>friends rating</b></a></div>
@@ -136,12 +136,6 @@
                                         <nav class="font-1 mt-5" aria-label="Page navigation example">
                                             <ul class="pagination justify-content-center pagination-warning">
                                                 <?= $this->pagination->create_links(); ?>
-                                                <!-- <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-left"></i></span><span class="sr-only">Previous</span></a></li>
-                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right"></i></span><span class="sr-only">Next</span></a></li> -->
                                             </ul>
                                         </nav>
                                     </div>

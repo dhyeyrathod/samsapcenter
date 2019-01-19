@@ -10,6 +10,7 @@ class Export_import extends MY_Controller
 		if (!$this->session->userdata('admin_id')) : redirect('account/login') ; endif ;
 		$this->load->model('admin');
 		$this->load->library('excel');
+		ini_set('max_execution_time', 300);
 	}
 	private function file_type_check($file_name)
 	{
@@ -67,6 +68,9 @@ class Export_import extends MY_Controller
 				$file_name = $_FILES['excel_sheet']['tmp_name'];
 				if ($this->file_type_check($file_name)) {
 					$respons = json_decode($this->profile_import($file_name));
+
+					echo "<pre>";print_r($respons);exit();
+
 					if ($respons->status == "failed") {
 						$data['error'] = $respons->message ;
 					} else {
@@ -296,22 +300,21 @@ class Export_import extends MY_Controller
 			} elseif ($profile_data['spa_profile']['title'][0] == " ") {
 				$error_message .= "Error at Row : " . $row . " | Col : title | Remove space before string."."<br>";
 			}
-
-			if ($profile_data['spa_profile']['contact_number'] == "" || !count($profile_data['spa_profile']['contact_number']) || $profile_data['spa_profile']['title'][0] == " ") {
-				$error_message .= "Error at Row : " . $row . " | Col : contact_number | contact_number is blank or not in correct formate."."<br>";
-			} 
-			if ($profile_data['spa_profile']['email_id'] == '') {
-				$error_message .= "Error at Row : " . $row . " | Col : email_id | email_id is blank or not in correct formate."."<br>";
-			}
+			// if ($profile_data['spa_profile']['contact_number'] == "" || !count($profile_data['spa_profile']['contact_number']) || $profile_data['spa_profile']['title'][0] == " ") {
+			// 	$error_message .= "Error at Row : " . $row . " | Col : contact_number | contact_number is blank or not in correct formate."."<br>";
+			// } 
+			// if ($profile_data['spa_profile']['email_id'] == '') {
+			// 	$error_message .= "Error at Row : " . $row . " | Col : email_id | email_id is blank or not in correct formate."."<br>";
+			// }
 			if ($profile_data['spa_profile']['user_id'] == '' || !is_numeric($profile_data['spa_profile']['user_id'])) {
 				$error_message .= "Error at Row : " . $row . " | Col : email_id | email_id is blank or not in correct formate."."<br>";
 			}
 			if ($profile_data['spa_profile_location']['address'] == '') {
 				$error_message .= "Error at Row : " . $row . " | Col : address | address is blank or not in correct formate."."<br>";
 			}
-			if ($profile_data['spa_profile_location']['google_map_url'] == '') {
-				$error_message .= "Error at Row : " . $row . " | Col : google_map_url | google_map_url is blank or not in correct formate."."<br>";
-			}
+			// if ($profile_data['spa_profile_location']['google_map_url'] == '') {
+			// 	$error_message .= "Error at Row : " . $row . " | Col : google_map_url | google_map_url is blank or not in correct formate."."<br>";
+			// }
 			if ($profile_data['spa_profile_location']['country_name'] == '') {
 				$error_message .= "Error at Row : " . $row . " | Col : country_name | country_name is blank or not in correct formate."."<br>";
 			} elseif ($this->admin->checkCountryPrsentByName($profile_data['spa_profile_location']['country_name']) < 0){

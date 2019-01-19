@@ -14,7 +14,7 @@
                         <?php $this->load->view('common/header') ?>
                         <div class="flexslider flexslider-simple">
                             <div class="fg">
-                                    <?= form_open('search') ?>
+                                    <?= form_open('search',array('method'=>'get')) ?>
                                     <div class="row">
                                         <div class=" col-lg-4"> 
                                             <input list="browsers" autocomplete="off" class="form-control" id="query" type="text" name="query" placeholder="Search">
@@ -118,14 +118,14 @@
                                                 <a  class="cuadroa" href="<?= base_url().str_replace(' ','-',$paid_profile_data->title)."/info/".$this->friend->base64url_encode($paid_profile_data->id) ?>">
                                                     <div class="cuadro_intro_hover ">
                                                         <p style="text-align:center;">
-                                                            <img src="<?= base_url('admin/spa_image') ?>/<?= $paid_profile_data->image ?>" onerror="imgError(this);" class="img-responsive" alt="">
+                                                            <img src="<?= base_url('admin/spa_image') ?>/<?= $paid_profile_data->image ? $paid_profile_data->image : "default.jpg" ?>" class="img-responsive" alt="">
                                                         </p>
                                                         <div class="caption">
                                                             <div class="blur"></div>
                                                             <div class="caption-text">
                                                                 <h3><marquee><?= $paid_profile_data->title ?></marquee></h3>
                                                                 <p><b><?= $paid_profile_data->city_name ?></b> </p>
-                                                                <hr/>
+                                                                <p class="bgp"><?= $paid_profile_data->description ? $paid_profile_data->description : "" ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -157,17 +157,17 @@
                                     <div class="row">
                                         <?php foreach ($free_profile_key as $key => $free_profile_data) : ?>
                                             <div class="col-lg-4  mb-3 mt-3 imgp">
-                                                <a href="<?= base_url().str_replace(' ','-',$paid_profile_data->title)."/info/".$this->friend->base64url_encode($paid_profile_data->id) ?>">
+                                                <a href="<?= base_url().str_replace(' ','-',$free_profile_data->title)."/info/".$this->friend->base64url_encode($free_profile_data->id) ?>">
                                                 <div class="cuadro_intro_hover ">
                                                     <p style="text-align:center;">
-                                                        <img src="<?= base_url('assets') ?>/images/portrait-1.jpg" class="img-responsive" alt="">
+                                                        <img src="<?= base_url('assets') ?>/images/portrait-1.jpg" class="img-responsive" alt="<?= str_replace(' ','-',$free_profile_data->title) ?>">
                                                     </p>
                                                     <div class="caption">
                                                         <div class="blur"></div>
                                                         <div class="caption-text">
                                                             <h3><marquee><?= $free_profile_data->title ?></marquee></h3>
                                                             <p><b><?= $free_profile_data->city_name ?></b> </p>
-                                                            <hr/>
+                                                            <p class="bgp"><?= $free_profile_data->description ? $free_profile_data->description : "" ?></p>
                                                            
                                                         </div>
                                                     </div>
@@ -185,12 +185,5 @@
             </div>
         </main>
         <?php $this->load->view('common/js') ?>
-        <script type="text/javascript">
-           function imgError(image) {
-                image.onerror = "";
-                image.src = "http://samspacenter.com/assets/images/portrait-1.jpg";
-                return true;
-            }
-        </script>
     </body>
 </html>

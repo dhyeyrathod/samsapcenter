@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="font-1 pt-2 pl-0 pb-0 pr-0">
+                <!-- <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <h1 class="gglsrc lng_commn">Beauty Spas in Delhi-NCR	</h1>
                         <div class="row">
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <div class="row">
@@ -107,7 +107,7 @@
                                     <div class="col-lg-12">
                                         <?php foreach ($get_cities_profiles as $key => $get_cities_profile_data) : ?>
                                             <div class="row align-items-center box-shadow border color-9 mb-3 mx-0 pt-3 pb-1">
-                                                <div class="col-sm-3"><a href="book-details.html"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-2.jpg"></a></div>
+                                                <div class="col-sm-3"><a href="<?= base_url().str_replace(' ','-',$get_cities_profile_data->title)."/info/".$this->friend->base64url_encode($get_cities_profile_data->id) ?>"> <img class="w-100" src="<?= base_url('assets') ?>/images/services-2.jpg"></a></div>
                                                 <div class="col-sm-6 color-1">
                                                     <p class="lead color-primary fw-600 mb-0"><?= $get_cities_profile_data->title ?></p>
                                                     <div class="color-warning">
@@ -124,7 +124,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 color-1">
-                                                    <a href="booking.html" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
+                                                    <a href="<?= base_url().str_replace(' ','-',$get_cities_profile_data->title)."/info/".$this->friend->base64url_encode($get_cities_profile_data->id) ?>" class="btn btn-icon btn-primary btn-icon-right btn-capsule fr">
                                                     <span class="fa fa-arrow-circle-right color-warning"></span> Book Online</a>
                                                 </div>
                                                 <div class="rating"> <a href="book-details.html"><span class="fa fa-star mr-1 color-warning"></span> Click here to view your <b>friends rating</b></a></div>

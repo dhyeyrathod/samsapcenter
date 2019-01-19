@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="font-1 pt-2 pl-0 pb-0 pr-0">
+                <!-- <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <h1 class="gglsrc lng_commn">Beauty Parlours in Delhi-NCR</h1>
                         <div class="row">
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <section class="font-1 pt-2 pl-0 pb-0 pr-0">
                     <div class="container">
                         <div class="row">

@@ -20,7 +20,7 @@ class MY_controller extends CI_Controller
 	{
 		if (!$this->session->userdata('current_locaation') && $this->session->userdata('current_locaation') == '') {
 			// $response = json_decode(file_get_contents("http://api.ipstack.com/".$this->friend->getRemoteUserIpaddress()->ip."?access_key=fa943f19d6d0b6a949dddd0be9c25951&format=1"));
-			$response = json_decode(file_get_contents("http://api.ipstack.com/123.136.175.162?access_key=fa943f19d6d0b6a949dddd0be9c25951&format=1"));
+			// $response = json_decode(file_get_contents("http://api.ipstack.com/123.136.175.162?access_key=fa943f19d6d0b6a949dddd0be9c25951&format=1"));
 			$this->session->set_userdata(array('current_locaation' => 'Mumbai'));
 			$this->session->set_userdata(array('current_locaation_country' => 'India'));
 		}

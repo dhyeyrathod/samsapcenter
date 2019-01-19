@@ -10,7 +10,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav fs-0 fw-700">
-                <li ><a href="free-listing.html">Free Listing</a></li>
+                <li ><a href="<?= base_url('members/dashboard') ?>">Free Listing</a></li>
                 <li><a href="advertise.html">Advertise</a></li>
                 <!-- <li class="has-dropdown"><a href="#">Cities</a>
                     <ul class="dropdown fs--1">

@@ -69,4 +69,9 @@ class Spa_profile extends MY_Controller
 			$this->output->set_content_type('application/json')->set_output(json_encode($respons));
 		}
 	}
+	public function profile_list()
+	{
+		$data['spa_list'] = $this->admin->getAllSpalist();
+		$this->load->view('profile_list',$data);
+	}
 }

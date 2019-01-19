@@ -23,8 +23,9 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                      <div class="dashboard-main-disc">
                         <div class="heading-inner">
-                           <a href="<?= base_url('members/new_profile') ?>"><button><p class="title">Add New Profile</p></button></a>
-                           <a href="<?= base_url('members/new_profile') ?>"><button><p class="title">Profile List</p></button></a>
+                          <a class="btn btn-primary" href="<?= base_url('members/new_profile') ?>">Add New Profile</a>
+                           <a class="btn btn-primary" href="<?= base_url('members/new_profile') ?>">Profile List</a>
+                           <a class="btn btn-primary" href="<?= base_url('members/dashboard') ?>">Dashboard</a>
                         </div>
                         <?php if ($this->session->flashdata('success')) : ?>
                             <div class="alert alert-success">

@@ -1,3 +1,4 @@
+<?php // echo "<pre>";print_r($profile_data);exit(); ?> 
 <!DOCTYPE html>
 <html lang="en-US" class="js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths chrome blink">
 <head>
@@ -23,8 +24,9 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                      <div class="dashboard-main-disc">
                         <div class="heading-inner">
-                           <a href="<?= base_url('members/new_profile') ?>"><button><p class="title">Add New Profile</p></button></a>
-                           <a href="<?= base_url('members/new_profile') ?>"><button><p class="title">Profile List</p></button></a>
+                           <a class="btn btn-primary" href="<?= base_url('members/new_profile') ?>">Add New Profile</a>
+                           <a class="btn btn-primary" href="<?= base_url('members/new_profile') ?>">Profile List</a>
+                           <a class="btn btn-primary" href="<?= base_url('members/dashboard') ?>">Dashboard</a>
                         </div>
                         <?php if ($this->session->flashdata('success')) : ?>
                             <div class="alert alert-success">
@@ -114,12 +116,12 @@
                               </div>
                               
 
-                              <div class="col-md-6 col-sm-12">
+                              <!-- <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
                                     <label>Image<span class="required">*</span></label>
                                     <input placeholder="" name="image_to_upload[]" class="form-control" type="file" multiple="">
                                  </div>
-                              </div>
+                              </div> -->
                               
                               
 
@@ -147,17 +149,12 @@
                                     <?= form_error('services_id','<div class="text-danger">','</div>'); ?>
                                  </div>
                               </div>
-                              <div class="col-md-6 col-sm-12">
+                              <!-- <div class="col-md-6 col-sm-12">
                                  <div class="form-group">
-                                    <label>Payment Type </label>
-                                    <select class="select-general form-control select2-hidden-accessible" tabindex="-1" value="<?= set_value('payment_type_name') ?>" name="payment_type_name" aria-hidden="true">
-                                       <option label="Select Option"></option>
-                                       <option value="2">FREE</option>
-                                       <option value="1">Paid</option>
-                                    </select>
-                                    <?= form_error('payment_type_name','<div class="text-danger">','</div>'); ?>
+                                    <label>Payment <span class="required">*</span></label>
+                                    <input placeholder="" disabled value="<?= $profile_data->payment_type ?>" class="form-control" type="text">
                                  </div>
-                              </div>
+                              </div> -->
 
                               <input type="hidden" value="<?= $profile_data->id ?>" name="profile_id">
 
